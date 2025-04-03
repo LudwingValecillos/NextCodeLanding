@@ -3,7 +3,7 @@ import React from "react";
 const WhatsAppButton = () => {
   return (
     <a
-      href={`https://wa.me/+5491123900395?text=Hola, estoy interesado por el servicio de instalación de cámaras, me gustaría saber más.`}
+      href={`https://wa.me/+5491173680952?text=Hola, estoy interesado por el servicio de instalación de cámaras, me gustaría saber más.`}
       target="_blank"
       rel="noopener noreferrer"
       className="fixed bottom-6 right-6 z-50 transform hover:scale-110 transition-all duration-300"

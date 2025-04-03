@@ -2,20 +2,6 @@ import React, { useEffect } from "react";
 import image from "../../assets/images/projectsection.jpg";
 import AOS from "aos";
 import "aos/dist/aos.css";
-let motion;
-try {
-  motion = require("framer-motion");
-} catch (e) {
-  // Si framer-motion no está disponible, creamos un objeto de reemplazo
-  motion = {
-    section: "section",
-    div: "div",
-    h2: "h2",
-    p: "p",
-    svg: "svg",
-    blockquote: "blockquote",
-  };
-}
 
 const ProjectsSection = () => {
   useEffect(() => {

@@ -44,11 +44,11 @@ const ServicesSection = () => {
       description:
         "Sitio web avanzado con características adicionales y panel de administración",
       features: [
-        "Diseño: Sitio web responsivo premium.",
-        "Páginas: Hasta 10 páginas.",
-        "Características: Panel de administración.",
-        "SEO: Optimización avanzada.",
-        "Ideal para: Empresas medianas.",
+        "Sitio web responsivo premium.",
+        "Hasta 10 páginas.",
+        "Panel de administración.",
+        "Optimización SEO avanzada.",
+        "Ideal para empresas medianas.",
       ],
       icon: (
         <svg
@@ -107,7 +107,7 @@ const ServicesSection = () => {
     },
   ];
   const handleMasInformacion = (plan) => {
-    const numeroTelefono = "+5491123900395";
+    const numeroTelefono = "+5491173680952";
     const mensaje = `Hola, estoy interesado en el ${plan}, me darias mas informacion?.`;
 
     // Utiliza la API de WhatsApp para enviar el mensaje
