@@ -234,7 +234,7 @@ const ContactSection = () => {
               data-aos-delay="300"
             >
               <a
-                href="https://www.instagram.com/tu_usuario"
+                href="https://www.instagram.com/nextcode01/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center text-white hover:text-[#20A366] transition-all duration-300 group"

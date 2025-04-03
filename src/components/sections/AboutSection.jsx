@@ -88,7 +88,7 @@ const AboutSection = () => {
             data-aos-delay="500"
             whileHover={{ scale: 1.02 }}
           >
-            <p className="text-white text-center lg:text-xl" data-aos="fade-up" data-aos-duration="800" data-aos-delay="500">
+            <p className="text-white text-center lg:text-xl" data-aos="fade-up" data-aos-duration="800" data-aos-delay="200">
               Desarrollamos soluciones web empresariales de alto rendimiento,
               implementando las últimas tecnologías y mejores prácticas de la
               industria para garantizar resultados excepcionales y una
