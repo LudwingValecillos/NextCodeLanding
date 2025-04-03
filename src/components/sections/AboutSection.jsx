@@ -257,7 +257,7 @@ const AboutSection = () => {
             {
               icon: <ClockIcon className="w-6 h-6 text-[#20A366]" />,
               value: "2 Años",
-              label: "Experiencia Comprobada",
+              label: "De experiencia",
               delay: 200,
             },
             {
