@@ -8,7 +8,6 @@ import {
 import { motion } from "framer-motion";
 import aboutImage1 from "../../assets/images/nvr.webp";
 import aboutImage2 from "../../assets/images/nvr.webp";
-import aboutImage from "../../assets/images/nvr.webp";
 
 const AboutSection = () => {
   const containerVariants = {

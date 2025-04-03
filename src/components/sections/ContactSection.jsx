@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import AOS from "aos";
 import "aos/dist/aos.css";
-import contactImage from "../../assets/images/backfroundcontact.jpg";
 
 const ContactSection = () => {
   useEffect(() => {
@@ -256,13 +255,12 @@ const ContactSection = () => {
               </motion.div>
             </form>
 
-       
-              {/* Instagram Link */}
-              <motion.div
-                className="mt-8 text-center"
-                variants={itemVariants}
-                data-aos="fade-up"
-                data-aos-delay="300"
+            {/* Instagram Link */}
+            <motion.div
+              className="mt-8 text-center"
+              variants={itemVariants}
+              data-aos="fade-up"
+              data-aos-delay="300"
             >
               <a
                 href="https://www.instagram.com/tu_usuario"
@@ -287,7 +285,6 @@ const ContactSection = () => {
                 </span>
               </a>
             </motion.div>
-            
           </motion.div>
         </motion.div>
       </div>

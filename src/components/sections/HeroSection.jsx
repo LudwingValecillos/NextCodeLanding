@@ -78,6 +78,11 @@ const HeroSection = () => {
         ></motion.div>
       </div>
 
+      {/* Gradient Overlay */}
+      <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-black/70 to-black/90 z-10" />
+      {/* Bottom Blur Effect */}
+      <div className="absolute -bottom-1 left-0 right-0 h-48 bg-gradient-to-b from-transparent via-black/70 to-black/90 backdrop-blur-md pointer-events-none z-20" />
+
       {/* Content Container */}
       <motion.div
         variants={containerVariants}

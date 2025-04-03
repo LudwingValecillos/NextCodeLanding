@@ -1,104 +1,82 @@
 <!DOCTYPE html>
 <html lang="es">
   <head>
-    <meta charset="utf-8" />
-    <link rel="icon" href="%PUBLIC_URL%/logo.png" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="theme-color" content="#2980B9" />
-
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="./src/assets/images/logo.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
     <!-- Primary Meta Tags -->
-    <title>M-Store Security - Sistemas de Seguridad Profesional</title>
-    <meta
-      name="title"
-      content="M-Store Security - Sistemas de Seguridad Profesional"
-    />
-    <meta
-      name="description"
-      content="Soluciones de seguridad avanzada para hogares y empresas. Cámaras de seguridad, NVR, sistemas de vigilancia y monitoreo 24/7. Instalación profesional y servicio técnico."
-    />
-    <meta
-      name="keywords"
-      content="seguridad, cámaras, vigilancia, NVR, monitoreo, sistemas de seguridad, M-Store Security"
-    />
-    <meta name="author" content="M-Store Security" />
-    <meta name="robots" content="index, follow" />
-
+    <title>Desarrollo Web Profesional | Creación de Sitios Web Modernos</title>
+    <meta name="title" content="Desarrollo Web Profesional | Creación de Sitios Web Modernos">
+    <meta name="description" content="Creamos sitios web modernos, responsivos y optimizados para SEO. Desarrollo web profesional con las últimas tecnologías. ¡Transforma tu presencia digital!">
+    
     <!-- Open Graph / Facebook -->
-    <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://www.tiendamstore.com/" />
-    <meta
-      property="og:title"
-      content="M-Store Security - Sistemas de Seguridad Profesional"
-    />
-    <meta
-      property="og:description"
-      content="Soluciones de seguridad avanzada para hogares y empresas. Cámaras de seguridad, NVR, sistemas de vigilancia y monitoreo 24/7."
-    />
-    <meta property="og:image" content="%PUBLIC_URL%/logo.png" />
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://tusitio.com/">
+    <meta property="og:title" content="Desarrollo Web Profesional | Creación de Sitios Web Modernos">
+    <meta property="og:description" content="Creamos sitios web modernos, responsivos y optimizados para SEO. Desarrollo web profesional con las últimas tecnologías. ¡Transforma tu presencia digital!">
+    <meta property="og:image" content="https://tusitio.com/og-image.jpg">
 
     <!-- Twitter -->
-    <meta property="twitter:card" content="summary_large_image" />
-    <meta property="twitter:url" content="https://www.tiendamstore.com/" />
-    <meta
-      property="twitter:title"
-      content="M-Store Security - Sistemas de Seguridad Profesional"
-    />
-    <meta
-      property="twitter:description"
-      content="Soluciones de seguridad avanzada para hogares y empresas. Cámaras de seguridad, NVR, sistemas de vigilancia y monitoreo 24/7."
-    />
-    <meta property="twitter:image" content="%PUBLIC_URL%/logo.png" />
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://tusitio.com/">
+    <meta property="twitter:title" content="Desarrollo Web Profesional | Creación de Sitios Web Modernos">
+    <meta property="twitter:description" content="Creamos sitios web modernos, responsivos y optimizados para SEO. Desarrollo web profesional con las últimas tecnologías. ¡Transforma tu presencia digital!">
+    <meta property="twitter:image" content="https://tusitio.com/og-image.jpg">
 
-    <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo.png" />
-    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
-
-    <!-- Preconnect to external resources -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-
+    <!-- Keywords -->
+    <meta name="keywords" content="desarrollo web, creación de sitios web, diseño web, páginas web, desarrollo de páginas web, web development, diseño responsivo, SEO, optimización web, desarrollo profesional">
+    
+    <!-- Theme Color -->
+    <meta name="theme-color" content="#20A366">
+    
+    <!-- Preconnect to external domains -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Preload critical assets -->
+    <link rel="preload" href="/hero-image.webp" as="image">
+    <link rel="preload" href="/about-image.webp" as="image">
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://tusitio.com/">
+    
+    <!-- Favicon -->
+    <link rel="apple-touch-icon" sizes="180x180" href="../src/assets/images/logo.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="../src/assets/images/logo.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../src/assets/images/logo.png">
+    <link rel="manifest" href="../src/assets/images/logo.png">
+    
     <!-- Structured Data -->
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
-        "@type": "Organization",
-        "name": "M-Store Security",
-        "description": "Sistemas de seguridad profesional y soluciones de vigilancia",
-        "url": "https://www.tiendamstore.com",
-        "logo": "https://www.tiendamstore.com/logo.png",
-        "contactPoint": {
-          "@type": "ContactPoint",
-          "telephone": "1123900395",
-          "contactType": "customer service",
-          "areaServed": "AR",
-          "availableLanguage": ["Spanish"]
-        },
-        "address": {
-          "@type": "PostalAddress",
-          "streetAddress": "Av. Corrientes 1464 piso 4 Oficina 1",
-          "addressLocality": "Ciudad Autónoma de Buenos Aires",
-          "addressCountry": "AR"
-        },
-        "sameAs": [
-          "https://www.facebook.com/profile.php?id=100085901675374",
-          "https://www.instagram.com/tiendamstoreok"
-        ]
+        "@type": "WebSite",
+        "name": "Desarrollo Web Profesional",
+        "url": "https://tusitio.com",
+        "description": "Creamos sitios web modernos, responsivos y optimizados para SEO. Desarrollo web profesional con las últimas tecnologías.",
+        "potentialAction": {
+          "@type": "SearchAction",
+          "target": "https://tusitio.com/search?q={search_term_string}",
+          "query-input": "required name=search_term_string"
+        }
       }
     </script>
   </head>
   <body>
-    <noscript
-      >Necesitas habilitar JavaScript para ejecutar esta aplicación.</noscript
-    >
     <div id="root"></div>
-    <!--
-      This HTML file is a template.
-      If you open it directly in the browser, you will see an empty page.
-
-      You can add webfonts, meta tags, or analytics to this file.
-      The build step will place the bundled scripts into the <body> tag.
-
-      To begin the development, run `npm start` or `yarn start`.
-      To create a production bundle, use `npm run build` or `yarn build`.
-    -->
+    <script type="module" src="/src/main.jsx"></script>
+    
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-XXXXXXXXXX');
+    </script>
   </body>
 </html>

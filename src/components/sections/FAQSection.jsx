@@ -29,14 +29,14 @@ const FAQSection = () => {
 
   return (
     <section 
-      className="py-16 bg-black relative overflow-hidden  w-screen" 
+      className="py-16 bg-black relative overflow-hidden -mt-5 w-screen" 
       style={{
         marginLeft: 'calc(-50vw + 50%)',
         marginRight: 'calc(-50vw + 50%)',
         width: '100vw'
       }}
     >
-      {/* Difuminado superior para transición desde Testimonios */}
+      {/* Difumiado superior para transición desde Testimonios */}
       <div className="absolute -top-1 left-0 right-0 h-32 bg-gradient-to-t from-transparent via-black/50 to-black pointer-events-none z-10"></div>
 
       {/* Fondo con gradiente y elementos animados */}
