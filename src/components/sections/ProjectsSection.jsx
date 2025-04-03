@@ -2,8 +2,6 @@ import React, { useEffect } from "react";
 import image from "../../assets/images/projectsection.jpg";
 import AOS from "aos";
 import "aos/dist/aos.css";
-
-// Importa framer-motion solo si está instalado
 let motion;
 try {
   motion = require("framer-motion");

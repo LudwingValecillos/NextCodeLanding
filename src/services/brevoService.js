@@ -13,12 +13,12 @@ export const sendEmail = async (formData) => {
       body: JSON.stringify({
         sender: {
           name: formData.name,
-          email: formData.email,
+          email: "ludwingvaldev@gmail.com",
         },
         to: [
           {
-            email: "tu-email@ejemplo.com", // Reemplaza con tu email
-            name: "Tu Nombre",
+            email: "ludwingvaldev@gmail.com", // Reemplaza con tu email
+            name: "Ludwing Valecillos",
           },
         ],
         subject: "Nuevo mensaje de contacto",
