@@ -36,7 +36,7 @@ const HeroSection = () => {
   };
 
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden py-12 md:py-0">
+    <section className="relative min-h-screen flex items-center justify-center overflow-hidden py-0 md:py-0">
       {/* Background Image with Parallax Effect */}
       <motion.div
         initial={{ scale: 1.2, opacity: 0 }}
@@ -46,7 +46,7 @@ const HeroSection = () => {
         style={{
           backgroundImage: `url(${heroImage})`,
           backgroundSize: "cover",
-          backgroundPosition: "center",
+          backgroundPosition: "top center",
           maxWidth: "100vw",
           overflow: "hidden",
         }}
@@ -83,9 +83,9 @@ const HeroSection = () => {
         variants={containerVariants}
         initial="hidden"
         animate="visible"
-        className="container mx-auto px-4 relative z-10 w-full max-w-full"
+        className="container mx-auto px-4 relative z-10 w-full max-w-full pt-0"
       >
-        <div className="flex justify-center items-center lg:justify-normal">
+        <div className="flex justify-center items-center lg:justify-normal mt-0">
           <img
             src={logo}
             alt=""
@@ -108,8 +108,20 @@ const HeroSection = () => {
               data-aos-duration="800"
               data-aos-delay="200"
             >
-              <p className="text-white" data-aos="fade-right" data-aos-duration="800" data-aos-delay="500">Desarrollo Web{" "}</p>
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#20A366] to-blue-400" data-aos="fade-left" data-aos-duration="800" data-aos-delay="500">
+              <p
+                className="text-white"
+                data-aos="fade-right"
+                data-aos-duration="800"
+                data-aos-delay="500"
+              >
+                Desarrollo Web{" "}
+              </p>
+              <span
+                className="text-transparent bg-clip-text bg-gradient-to-r from-[#20A366] to-blue-400"
+                data-aos="fade-left"
+                data-aos-duration="800"
+                data-aos-delay="500"
+              >
                 Profesional
               </span>
             </motion.h1>
@@ -160,7 +172,7 @@ const HeroSection = () => {
                   contactoDiv.scrollIntoView({ behavior: "smooth" });
                 }}
               >
-                <span >Ver planes</span>
+                <span>Ver planes</span>
                 <motion.svg
                   className="w-5 h-5"
                   fill="none"
