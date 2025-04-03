@@ -139,6 +139,8 @@ const ContactSection = () => {
                     focus:ring-2 focus:ring-[#20A366] focus:border-transparent text-white
                     transition-all duration-300 hover:border-white/30"
                     required
+                    minLength={2}
+                    maxLength={50}
                   />
                 </motion.div>
                 <motion.div variants={itemVariants}>
@@ -179,6 +181,7 @@ const ContactSection = () => {
                   className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-lg 
                   focus:ring-2 focus:ring-[#20A366] focus:border-transparent text-white
                   transition-all duration-300 hover:border-white/30"
+                  pattern="[0-9+\s-()]*"
                 />
               </motion.div>
               <motion.div variants={itemVariants}>
@@ -199,16 +202,28 @@ const ContactSection = () => {
                   focus:ring-2 focus:ring-[#20A366] focus:border-transparent text-white
                   transition-all duration-300 hover:border-white/30 resize-none"
                   required
+                  minLength={10}
+                  maxLength={500}
                 ></motion.textarea>
               </motion.div>
               {status.error && (
-                <div className="text-red-500 text-sm">{status.error}</div>
+                <motion.div
+                  initial={{ opacity: 0, y: -10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  className="text-red-500 text-sm bg-red-500/10 p-3 rounded-lg"
+                >
+                  {status.error}
+                </motion.div>
               )}
               {status.success && (
-                <div className="text-green-500 text-sm">
+                <motion.div
+                  initial={{ opacity: 0, y: -10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  className="text-green-500 text-sm bg-green-500/10 p-3 rounded-lg"
+                >
                   ¡Mensaje enviado con éxito! Nos pondremos en contacto contigo
                   pronto.
-                </div>
+                </motion.div>
               )}
               <motion.div
                 className="flex justify-center"
@@ -219,9 +234,33 @@ const ContactSection = () => {
                   disabled={status.loading}
                   whileHover={{ scale: 1.02 }}
                   whileTap={{ scale: 0.98 }}
-                  className="w-full bg-blue-600 text-white py-3 px-6 rounded-lg font-semibold hover:bg-blue-700 transition-colors duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
+                  className="w-full bg-[#20A366] text-white py-3 px-6 rounded-lg font-semibold 
+                           hover:bg-[#20A366]/90 transition-colors duration-300 
+                           disabled:opacity-50 disabled:cursor-not-allowed
+                           focus:outline-none focus:ring-2 focus:ring-[#20A366] focus:ring-offset-2 focus:ring-offset-gray-900"
                 >
-                  {status.loading ? "Enviando..." : "Enviar Mensaje"}
+                  {status.loading ? (
+                    <span className="flex items-center justify-center gap-2">
+                      <svg className="animate-spin h-5 w-5" viewBox="0 0 24 24">
+                        <circle
+                          className="opacity-25"
+                          cx="12"
+                          cy="12"
+                          r="10"
+                          stroke="currentColor"
+                          strokeWidth="4"
+                        />
+                        <path
+                          className="opacity-75"
+                          fill="currentColor"
+                          d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
+                        />
+                      </svg>
+                      Enviando...
+                    </span>
+                  ) : (
+                    "Enviar Mensaje"
+                  )}
                 </motion.button>
               </motion.div>
             </form>

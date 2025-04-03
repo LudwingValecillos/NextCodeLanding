@@ -7,6 +7,7 @@ import {
   CursorArrowRaysIcon,
   WrenchScrewdriverIcon,
 } from "@heroicons/react/24/outline";
+import { motion } from "framer-motion";
 
 const FeaturesSection = () => {
   const features = [
@@ -47,37 +48,53 @@ const FeaturesSection = () => {
         "Nos encargamos de que tu sitio esté al día y funcione perfecto. Vos enfocate en tu negocio, nosotros en que tu web esté impecable.",
     },
   ];
-  
+
+  const itemVariants = {
+    initial: { opacity: 0, y: 20 },
+    animate: { opacity: 1, y: 0 },
+  };
 
   return (
     <section className="relative">
       <div className="py-16 bg-gradient-to-b from-black to-gray-900 mb-10">
         <div className="container mx-auto px-4">
-          <div className="text-center mb-12" data-aos="fade-up">
-            <p className="text-2xl text-gray-100 max-w-2xl mx-auto">
-              Mirá todo lo que podemos hacer por tu negocio. ¡La web que siempre
-              quisiste está a un click!
-            </p>
-          </div>
+          <h2 className="text-3xl md:text-4xl font-bold text-white mb-6 text-center">
+            ¿Por qué{" "}
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#20A366] to-blue-400">
+              elegirnos
+            </span>
+            ?
+          </h2>
+          <p className="text-lg text-gray-300 mb-12 max-w-2xl mx-auto text-center">
+            Ofrecemos soluciones web completas que se adaptan a tus necesidades
+          </p>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {features.map((feature, index) => (
-              <div
+              <motion.div
                 key={index}
-                className="bg-white/5 backdrop-blur-xl rounded-xl p-6 transform transition-all duration-300 hover:scale-105 hover:shadow-[0_0_15px_rgba(32,163,102,0.3)] border border-white/20"
+                variants={itemVariants}
+                className="bg-white/5 backdrop-blur-sm p-6 rounded-xl border border-white/10
+                         hover:bg-white/10 hover:border-white/20 transition-all duration-300
+                         group cursor-pointer"
+                whileHover={{ scale: 1.02 }}
                 data-aos="fade-up"
                 data-aos-delay={index * 100}
               >
-                <div className="flex items-center gap-4">
-                  <div className="w-12 h-12 bg-[#20A366]/20 rounded-lg flex items-center justify-center mb-4">
+                <div className="flex items-start gap-4">
+                  <div className="p-3 bg-[#20A366]/20 rounded-lg group-hover:bg-[#20A366]/30 transition-colors duration-300">
                     <feature.icon className="w-6 h-6 text-[#20A366]" />
                   </div>
-                  <h3 className="text-xl font-semibold text-white mb-2">
-                    {feature.title}
-                  </h3>
+                  <div>
+                    <h3 className="text-xl font-semibold text-white mb-2 group-hover:text-[#20A366] transition-colors duration-300">
+                      {feature.title}
+                    </h3>
+                    <p className="text-gray-300 leading-relaxed">
+                      {feature.description}
+                    </p>
+                  </div>
                 </div>
-                <p className="text-gray-300">{feature.description}</p>
-              </div>
+              </motion.div>
             ))}
           </div>
 

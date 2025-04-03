@@ -85,10 +85,10 @@ const AboutSection = () => {
             className="max-w-3xl mx-auto bg-[#20A366] rounded-lg p-4 mb-8 transform transition-all duration-300 hover:shadow-lg hover:shadow-[#20A366]/30"
             data-aos="fade-up"
             data-aos-duration="800"
-            data-aos-delay="300"
+            data-aos-delay="500"
             whileHover={{ scale: 1.02 }}
           >
-            <p className="text-white text-center lg:text-xl">
+            <p className="text-white text-center lg:text-xl" data-aos="fade-up" data-aos-duration="800" data-aos-delay="500">
               Desarrollamos soluciones web empresariales de alto rendimiento,
               implementando las últimas tecnologías y mejores prácticas de la
               industria para garantizar resultados excepcionales y una
@@ -250,20 +250,20 @@ const AboutSection = () => {
           {[
             {
               icon: <UserGroupIcon className="w-6 h-6 text-[#20A366]" />,
-              value: "+500",
-              label: "Clientes Satisfechos",
+              value: "+50",
+              label: "Clientes",
               delay: 100,
             },
             {
               icon: <ClockIcon className="w-6 h-6 text-[#20A366]" />,
-              value: "8 Años",
+              value: "2 Años",
               label: "Experiencia Comprobada",
               delay: 200,
             },
             {
               icon: <ShieldCheckIcon className="w-6 h-6 text-[#20A366]" />,
               value: "100%",
-              label: "Satisfacción Garantizada",
+              label: "Calidad",
               delay: 300,
             },
           ].map((stat, index) => (

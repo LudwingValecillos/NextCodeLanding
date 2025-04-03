@@ -44,11 +44,11 @@ const ServicesSection = () => {
       description:
         "Sitio web avanzado con características adicionales y panel de administración",
       features: [
+        "Incluye todo lo del plan anterior.",
         "Sitio web responsivo premium.",
-        "Hasta 10 páginas.",
-        "Panel de administración.",
+        "Hasta 5 páginas.",
         "Optimización SEO avanzada.",
-        "Ideal para empresas medianas.",
+        "Ideal para mostrar información de una empresa.",
       ],
       icon: (
         <svg
@@ -77,11 +77,12 @@ const ServicesSection = () => {
       description:
         "Solución web completa con e-commerce y características personalizadas",
       features: [
-        "Diseño: Sitio web personalizado.",
-        "Páginas: Ilimitadas.",
-        "Características: E-commerce completo.",
-        "SEO: Optimización premium.",
-        "Ideal para: Grandes empresas.",
+        "Incluye todo lo del plan anterior.",
+        "Sitio web personalizado.",
+        "Páginas ilimitadas.",
+        "Base de datos.",
+        "Optimización SEO premium.",
+        "Ideal para grandes empresas.",
       ],
       icon: (
         <svg
@@ -108,7 +109,7 @@ const ServicesSection = () => {
   ];
   const handleMasInformacion = (plan) => {
     const numeroTelefono = "+5491173680952";
-    const mensaje = `Hola, estoy interesado en el ${plan}, me darias mas informacion?.`;
+    const mensaje = `Hola, estoy interesado en el ${plan}, me darias mas informacion?`;
 
     // Utiliza la API de WhatsApp para enviar el mensaje
     const url = `https://wa.me/${numeroTelefono}?text=${encodeURIComponent(

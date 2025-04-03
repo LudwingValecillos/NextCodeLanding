@@ -103,49 +103,64 @@ const HeroSection = () => {
           >
             <motion.h1
               variants={itemVariants}
-              className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold mb-4 md:mb-6 leading-tight"
+              className="text-4xl md:text-6xl font-bold text-white mb-6 leading-tight"
               data-aos="fade-up"
-            >
-              Desarrollo Web
-              <motion.span
-                variants={itemVariants}
-                className="text-[#20A366] block sm:inline"
-                data-aos="fade-up"
-                data-aos-delay="100"
-              >
-                {" "}
-                Profesional
-              </motion.span>
-            </motion.h1>
-
-            <motion.p
-              variants={itemVariants}
-              className="text-lg sm:text-xl md:text-2xl text-gray-200 mb-6 md:mb-8"
-              data-aos="fade-up"
+              data-aos-duration="800"
               data-aos-delay="200"
             >
+              <p className="text-white" data-aos="fade-right" data-aos-duration="800" data-aos-delay="500">Desarrollo Web{" "}</p>
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#20A366] to-blue-400" data-aos="fade-left" data-aos-duration="800" data-aos-delay="500">
+                Profesional
+              </span>
+            </motion.h1>
+            <motion.p
+              variants={itemVariants}
+              className="text-lg md:text-xl text-gray-200 mb-8 max-w-2xl mx-auto leading-relaxed"
+              data-aos="fade-up"
+              data-aos-duration="800"
+              data-aos-delay="300"
+            >
               Creamos sitios web modernos y funcionales que impulsan tu negocio
-              al siguiente nivel
+              al siguiente nivel.
             </motion.p>
-
             <motion.div
               variants={itemVariants}
-              className="flex flex-col sm:flex-row gap-4"
+              className="flex flex-col sm:flex-row gap-4 justify-center"
               data-aos="fade-up"
-              data-aos-delay="300"
+              data-aos-duration="800"
+              data-aos-delay="400"
             >
               <motion.button
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                className="w-full sm:w-auto px-8 py-4 bg-[#20A366] text-white rounded-lg text-lg font-semibold
+                className="px-8 py-4 bg-[#20A366] text-white rounded-lg text-lg font-semibold
                 transform transition-all duration-300 hover:shadow-lg hover:shadow-[#20A366]/30
-                flex items-center justify-center gap-2 group"
+                flex items-center justify-center gap-2 group relative overflow-hidden"
                 onClick={() => {
                   const contactoDiv = document.getElementById("contacto");
                   contactoDiv.scrollIntoView({ behavior: "smooth" });
                 }}
               >
-                <span>Contáctanos</span>
+                <span className="relative z-10">Comenzar Proyecto</span>
+                <motion.div
+                  className="absolute inset-0 bg-white"
+                  initial={{ scale: 0, opacity: 0 }}
+                  whileHover={{ scale: 1, opacity: 0.1 }}
+                  transition={{ duration: 0.3 }}
+                />
+              </motion.button>
+              <motion.button
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                className="px-8 py-4 bg-white/80 border-2 border-white text-black hover:text-white rounded-lg text-lg font-semibold
+                transform transition-all duration-300 hover:bg-white/10
+                flex items-center justify-center gap-2 group"
+                onClick={() => {
+                  const contactoDiv = document.getElementById("servicios");
+                  contactoDiv.scrollIntoView({ behavior: "smooth" });
+                }}
+              >
+                <span >Ver planes</span>
                 <motion.svg
                   className="w-5 h-5"
                   fill="none"
@@ -161,41 +176,14 @@ const HeroSection = () => {
                   />
                 </motion.svg>
               </motion.button>
-              <motion.button
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className="w-full sm:w-auto px-8 py-4 bg-white/10 backdrop-blur-sm text-white rounded-lg text-lg font-semibold
-                transform transition-all duration-300 hover:bg-white/20
-                flex items-center justify-center gap-2 group"
-                onClick={() => {
-                  const serviciosDiv = document.getElementById("servicios");
-                  serviciosDiv.scrollIntoView({ behavior: "smooth" });
-                }}
-              >
-                <span>Ver Servicios</span>
-                <motion.svg
-                  className="w-5 h-5"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                  whileHover={{ x: 5 }}
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M9 5l7 7-7 7"
-                  />
-                </motion.svg>
-              </motion.button>
             </motion.div>
 
             {/* Features Grid */}
             <motion.div
               variants={containerVariants}
-              className="grid grid-cols-2 sm:grid-cols-3 gap-4 sm:gap-6 mt-8 sm:mt-12 mb-5"
+              className="grid grid-cols-2 sm:grid-cols-3 gap-4 sm:gap-6 mt-8 sm:mt-12 mb-5 font-bold"
               data-aos="fade-up"
-              data-aos-delay="400"
+              data-aos-delay="500"
             >
               {[
                 { icon: "💻", text: "Diseño Responsivo" },
@@ -203,7 +191,7 @@ const HeroSection = () => {
                 { icon: "🎨", text: "UI/UX Moderno" },
                 { icon: "🔍", text: "SEO Optimizado" },
                 { icon: "📱", text: "Apps Web" },
-                { icon: "🛠️", text: "Tecnologías Actuales" },
+                { icon: "🤖", text: "Tecnologías Actuales" },
               ].map((feature, index) => (
                 <motion.div
                   key={index}
@@ -212,7 +200,7 @@ const HeroSection = () => {
                   className="flex items-center gap-2 sm:gap-3 bg-white/5 backdrop-blur-sm p-3 sm:p-4 rounded-lg
                     transform transition-all duration-300 hover:bg-white/10"
                   data-aos="fade-up"
-                  data-aos-delay={500 + index * 100}
+                  data-aos-delay={600 + index * 100}
                 >
                   <span className="text-xl sm:text-2xl">{feature.icon}</span>
                   <span className="text-sm sm:text-base text-white/90">
