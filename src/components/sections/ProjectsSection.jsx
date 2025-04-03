@@ -34,23 +34,29 @@ const ProjectsSection = () => {
     {
       name: "María S.",
       rating: 5,
-      text: "El sitio web que desarrollaron para mi negocio superó todas mis expectativas. El diseño es moderno y la funcionalidad es excelente.",
-      position: "Dueña de Negocio",
+      text: "¡Me encanta mi nueva web! Es súper fácil de usar y mis clientes encuentran todo al toque. Las consultas se multiplicaron desde que la tengo. ¡Gracias chicos!",
+      position: "Dueña de Cosmética Natural",
       plan: "Landing Page",
+      image:
+        "https://images.unsplash.com/photo-1598550874175-4d0ef436c909?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=200&q=80",
     },
     {
       name: "Roberto L.",
       rating: 5,
-      text: "Excelente servicio y profesionalismo. Mi e-commerce funciona perfectamente y las ventas han aumentado significativamente.",
-      position: "Emprendedor",
-      plan: "Landing Page",
+      text: "Probé con varios desarrolladores antes, pero estos pibes la rompen. Mi tienda online quedó espectacular y las ventas se fueron al cielo. El soporte es un 10/10.",
+      position: "Tienda de Tecnología",
+      plan: "E-commerce",
+      image:
+        "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=200&q=80",
     },
     {
       name: "Ana C.",
       rating: 5,
-      text: "Muy satisfecha con el resultado. El sitio es rápido, responsivo y el soporte técnico es excepcional.",
-      position: "Cliente Corporativo",
-      plan: "Página Web",
+      text: "Necesitábamos una web profesional pero fácil de manejar. Estos chicos dieron en el clavo: rápida, moderna y super intuitiva. ¡Hasta nos enseñaron a actualizarla nosotros mismos!",
+      position: "Marketing Manager",
+      plan: "Web Corporativa",
+      image:
+        "https://images.unsplash.com/photo-1580489944761-15a19d654956?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=200&q=80",
     },
   ];
 

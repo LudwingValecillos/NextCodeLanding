@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import AOS from "aos";
 import "aos/dist/aos.css";
+import { sendEmail } from "../../services/brevoService";
 
 const ContactSection = () => {
   useEffect(() => {
@@ -19,8 +20,11 @@ const ContactSection = () => {
     message: "",
   });
 
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const [submitSuccess, setSubmitSuccess] = useState(false);
+  const [status, setStatus] = useState({
+    loading: false,
+    success: false,
+    error: null,
+  });
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -44,30 +48,32 @@ const ContactSection = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setIsSubmitting(true);
+    setStatus({ loading: true, success: false, error: null });
 
-    // Simulación de envío
-    await new Promise((resolve) => setTimeout(resolve, 1500));
-    setIsSubmitting(false);
-    setSubmitSuccess(true);
-
-    // Reset después de 3 segundos
-    setTimeout(() => {
-      setSubmitSuccess(false);
+    try {
+      await sendEmail(formData);
+      setStatus({ loading: false, success: true, error: null });
       setFormData({
         name: "",
         email: "",
         phone: "",
         message: "",
       });
-    }, 3000);
+    } catch (error) {
+      setStatus({
+        loading: false,
+        success: false,
+        error: "Error al enviar el mensaje. Por favor, inténtalo de nuevo.",
+      });
+    }
   };
 
   const handleChange = (e) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value,
-    });
+    const { name, value } = e.target;
+    setFormData((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
   };
 
   return (
@@ -195,63 +201,28 @@ const ContactSection = () => {
                   required
                 ></motion.textarea>
               </motion.div>
+              {status.error && (
+                <div className="text-red-500 text-sm">{status.error}</div>
+              )}
+              {status.success && (
+                <div className="text-green-500 text-sm">
+                  ¡Mensaje enviado con éxito! Nos pondremos en contacto contigo
+                  pronto.
+                </div>
+              )}
               <motion.div
                 className="flex justify-center"
                 variants={itemVariants}
               >
-                <AnimatePresence mode="wait">
-                  {!isSubmitting && !submitSuccess && (
-                    <motion.button
-                      type="submit"
-                      className="group relative px-8 py-3 bg-[#20A366] text-white rounded-lg font-semibold 
-                      overflow-hidden transition-all duration-300"
-                      whileHover={{ scale: 1.05 }}
-                      whileTap={{ scale: 0.95 }}
-                    >
-                      <span className="relative z-10">Enviar Mensaje</span>
-                      <motion.div
-                        className="absolute inset-0 bg-white"
-                        initial={{ scale: 0, opacity: 0 }}
-                        whileHover={{ scale: 1, opacity: 0.1 }}
-                        transition={{ duration: 0.3 }}
-                      />
-                    </motion.button>
-                  )}
-                  {isSubmitting && (
-                    <motion.div
-                      initial={{ opacity: 0 }}
-                      animate={{ opacity: 1 }}
-                      exit={{ opacity: 0 }}
-                      className="flex items-center space-x-2"
-                    >
-                      <div className="w-6 h-6 border-2 border-[#20A366] border-t-transparent rounded-full animate-spin"></div>
-                      <span className="text-white">Enviando...</span>
-                    </motion.div>
-                  )}
-                  {submitSuccess && (
-                    <motion.div
-                      initial={{ opacity: 0, y: 10 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      exit={{ opacity: 0, y: -10 }}
-                      className="text-[#20A366] font-medium flex items-center space-x-2"
-                    >
-                      <svg
-                        className="w-6 h-6"
-                        fill="none"
-                        stroke="currentColor"
-                        viewBox="0 0 24 24"
-                      >
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          strokeWidth={2}
-                          d="M5 13l4 4L19 7"
-                        />
-                      </svg>
-                      <span>¡Mensaje enviado con éxito!</span>
-                    </motion.div>
-                  )}
-                </AnimatePresence>
+                <motion.button
+                  type="submit"
+                  disabled={status.loading}
+                  whileHover={{ scale: 1.02 }}
+                  whileTap={{ scale: 0.98 }}
+                  className="w-full bg-blue-600 text-white py-3 px-6 rounded-lg font-semibold hover:bg-blue-700 transition-colors duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
+                >
+                  {status.loading ? "Enviando..." : "Enviar Mensaje"}
+                </motion.button>
               </motion.div>
             </form>
 

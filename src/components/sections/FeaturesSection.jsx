@@ -12,41 +12,42 @@ const FeaturesSection = () => {
   const features = [
     {
       icon: DevicePhoneMobileIcon,
-      title: "Se ve genial en todos lados",
+      title: "Se adapta a todos los dispositivos",
       description:
-        "Tu web va a verse increíble tanto en el celu como en la compu. ¡Nada de diseños rotos o desprolijos!",
+        "Tu web se va a ver impecable en cualquier pantalla, ya sea en el celu, la compu o la tablet. Nada de desajustes raros ni diseños desprolijos.",
     },
     {
       icon: RocketLaunchIcon,
-      title: "Rapidez ante todo",
+      title: "Velocidad que vuela",
       description:
-        "¿Web lenta? ¡Ni en pedo! Optimizamos todo para que tu sitio vuele y tus visitantes no se desesperen esperando.",
+        "Nada peor que una web lenta. Optimizamos todo al máximo para que tu sitio cargue rapidísimo y no pierdas visitantes por la espera.",
     },
     {
       icon: ShieldCheckIcon,
-      title: "Seguridad a full",
+      title: "Máxima seguridad",
       description:
-        "Dormí tranquilo, che. Tu sitio está protegido con la mejor seguridad contra cualquier amenaza digital.",
+        "Tu sitio protegido contra cualquier amenaza digital. Tranquilidad total para vos y para tus usuarios.",
     },
     {
       icon: ChartBarIcon,
-      title: "Primeros en Google",
+      title: "Tu web en lo más alto de Google",
       description:
-        "Te ayudamos a aparecer en los primeros resultados de búsqueda. ¡Chau a estar en la página 20 de Google!",
+        "Te ayudamos a posicionarte bien arriba en los resultados de búsqueda. Más visibilidad, más clientes, más éxito.",
     },
     {
       icon: CursorArrowRaysIcon,
-      title: "Fácil de usar",
+      title: "Fácil y accesible para todos",
       description:
-        "Hacemos que tu web sea tan simple de navegar que hasta tu abuela podría usarla sin drama.",
+        "Diseñamos tu web para que cualquiera pueda navegarla sin complicaciones. Intuitiva, clara y sin enredos.",
     },
     {
       icon: WrenchScrewdriverIcon,
-      title: "Siempre al día",
+      title: "Siempre actualizada",
       description:
-        "Nos encargamos de mantener todo actualizado y funcionando de 10. Vos concentrate en tu negocio, que del sitio nos ocupamos nosotros.",
+        "Nos encargamos de que tu sitio esté al día y funcione perfecto. Vos enfocate en tu negocio, nosotros en que tu web esté impecable.",
     },
   ];
+  
 
   return (
     <section className="relative">

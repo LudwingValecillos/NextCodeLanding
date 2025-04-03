@@ -57,12 +57,12 @@ const AboutSection = () => {
   };
 
   return (
-    <section className="bg-gradient-to-b from-gray-900 to-black py-8 relative overflow-hidden">
-      {/* Animated background elements */}
-      <div className="absolute inset-0 overflow-hidden">
-        <div className="absolute w-96 h-96 bg-[#20A366]/10 rounded-full blur-3xl animate-pulse -top-48 -left-48"></div>
-        <div className="absolute w-96 h-96 bg-[#20A366]/10 rounded-full blur-3xl animate-pulse -bottom-48 -right-48"></div>
-      </div>
+    <section
+      id="about"
+      className="relative py-20 bg-black overflow-hidden -mt-16"
+    >
+      {/* Top gradient transition with blur */}
+      <div className="absolute -top-1 left-0 right-0 h-10 bg-gradient-to-t from-transparent via-black/70 to-black/80 backdrop-blur-md pointer-events-none z-10"></div>
 
       <div className="container mx-auto px-4 relative">
         {/* Title and Description */}
@@ -80,7 +80,7 @@ const AboutSection = () => {
             data-aos-duration="800"
             data-aos-delay="200"
           >
-            Desarrollo web profesional y eficiente
+            Soluciones Web Empresariales
           </motion.h2>
           <motion.div
             variants={itemVariants}
@@ -91,9 +91,10 @@ const AboutSection = () => {
             whileHover={{ scale: 1.02 }}
           >
             <p className="text-white text-center lg:text-xl">
-              Creamos sitios web modernos y funcionales con las últimas
-              tecnologías, garantizando un servicio profesional y eficiente.
-              Ofrecemos diferentes planes según tus necesidades y presupuesto.
+              Desarrollamos soluciones web empresariales de alto rendimiento,
+              implementando las últimas tecnologías y mejores prácticas de la
+              industria para garantizar resultados excepcionales y una
+              experiencia digital superior.
             </p>
           </motion.div>
         </motion.div>
@@ -116,7 +117,7 @@ const AboutSection = () => {
           >
             <div className="rounded-lg overflow-hidden shadow-md relative">
               <img
-                src={aboutImage1}
+                src="https://images.unsplash.com/photo-1551434678-e076c223a692?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80"
                 alt="Tecnología Web"
                 className="w-full object-cover"
                 style={{ height: "280px" }}
@@ -145,10 +146,10 @@ const AboutSection = () => {
 
             <motion.ul variants={containerVariants} className="space-y-2">
               {[
-                "Diseño responsivo moderno",
-                "Optimización SEO avanzada",
-                "Tecnologías actuales",
-                "Rendimiento optimizado",
+                "Arquitectura web moderna y escalable",
+                "Optimización avanzada para motores de búsqueda",
+                "Implementación de tecnologías de vanguardia",
+                "Rendimiento y velocidad optimizados",
               ].map((item, index) => (
                 <motion.li
                   key={index}
@@ -186,7 +187,7 @@ const AboutSection = () => {
           >
             <div className="rounded-lg overflow-hidden shadow-md relative">
               <img
-                src={aboutImage2}
+                src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80"
                 alt="Equipo de Desarrollo"
                 className="w-full object-cover"
                 style={{ height: "280px" }}
@@ -215,10 +216,10 @@ const AboutSection = () => {
 
             <motion.ul variants={containerVariants} className="space-y-2">
               {[
-                "Desarrollo personalizado",
-                "Soporte técnico continuo",
-                "Mantenimiento web regular",
-                "Respuesta rápida",
+                "Desarrollo personalizado según necesidades específicas",
+                "Soporte técnico especializado 24/7",
+                "Mantenimiento preventivo y correctivo",
+                "Respuesta inmediata a incidencias",
               ].map((item, index) => (
                 <motion.li
                   key={index}
@@ -252,19 +253,19 @@ const AboutSection = () => {
             {
               icon: <UserGroupIcon className="w-6 h-6 text-[#20A366]" />,
               value: "+500",
-              label: "Proyectos",
+              label: "Clientes Satisfechos",
               delay: 100,
             },
             {
               icon: <ClockIcon className="w-6 h-6 text-[#20A366]" />,
               value: "8 Años",
-              label: "Experiencia",
+              label: "Experiencia Comprobada",
               delay: 200,
             },
             {
               icon: <ShieldCheckIcon className="w-6 h-6 text-[#20A366]" />,
               value: "100%",
-              label: "Satisfacción",
+              label: "Satisfacción Garantizada",
               delay: 300,
             },
           ].map((stat, index) => (

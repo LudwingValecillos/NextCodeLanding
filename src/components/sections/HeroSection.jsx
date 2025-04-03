@@ -78,11 +78,6 @@ const HeroSection = () => {
         ></motion.div>
       </div>
 
-      {/* Gradient Overlay */}
-      <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-black/70 to-black/90 z-10" />
-      {/* Bottom Blur Effect */}
-      <div className="absolute -bottom-1 left-0 right-0 h-48 bg-gradient-to-b from-transparent via-black/70 to-black/90 backdrop-blur-md pointer-events-none z-20" />
-
       {/* Content Container */}
       <motion.div
         variants={containerVariants}
@@ -198,7 +193,7 @@ const HeroSection = () => {
             {/* Features Grid */}
             <motion.div
               variants={containerVariants}
-              className="grid grid-cols-2 sm:grid-cols-3 gap-4 sm:gap-6 mt-8 sm:mt-12"
+              className="grid grid-cols-2 sm:grid-cols-3 gap-4 sm:gap-6 mt-8 sm:mt-12 mb-5"
               data-aos="fade-up"
               data-aos-delay="400"
             >
@@ -245,7 +240,7 @@ const HeroSection = () => {
                 alt="Seguridad Inteligente"
                 className="w-full h-[600px] object-cover"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent " />
             </motion.div>
           </motion.div>
         </div>
