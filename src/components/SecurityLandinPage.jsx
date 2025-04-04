@@ -2,7 +2,6 @@ import React, { useEffect, Suspense, lazy } from "react";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import { AnimatePresence } from "framer-motion";
-import loading from "../assets/images/logo.png";
 
 // Lazy load components
 const HeroSection = lazy(() => import("./sections/HeroSection"));
@@ -24,42 +23,18 @@ const SecurityLandingPage = () => {
     });
   }, []);
 
-  const LoadingFallback = () => (
-    <div className="min-h-screen flex items-center justify-center">
-      <img src={loading} alt="Loading" className="w-40 h-40" />
-    </div>
-  );
-
   return (
     <AnimatePresence mode="wait">
       <div className="font-sans">
-        <Suspense fallback={<LoadingFallback />}>
-          <HeroSection />
-        </Suspense>
-        <Suspense fallback={<LoadingFallback />}>
-          <AboutSection />
-        </Suspense>
-        <Suspense fallback={<LoadingFallback />}>
-          <ServicesSection />
-        </Suspense>
-        <Suspense fallback={<LoadingFallback />}>
-          <NVRSection />
-        </Suspense>
-        <Suspense fallback={<LoadingFallback />}>
-          <FeaturesSection />
-        </Suspense>
-        <Suspense fallback={<LoadingFallback />}>
-          <ProjectsSection />
-        </Suspense>
-        <Suspense fallback={<LoadingFallback />}>
-          <FAQSection />
-        </Suspense>
-        <Suspense fallback={<LoadingFallback />}>
-          <ContactSection />
-        </Suspense>
-        <Suspense fallback={null}>
-          <WhatsAppButton />
-        </Suspense>
+        <HeroSection />
+        <AboutSection />
+        <ServicesSection />
+        <NVRSection />
+        <FeaturesSection />
+        <ProjectsSection />
+        <FAQSection />
+        <ContactSection />
+        <WhatsAppButton />
       </div>
     </AnimatePresence>
   );
