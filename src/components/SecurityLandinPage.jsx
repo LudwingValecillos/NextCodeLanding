@@ -2,6 +2,7 @@ import React, { useEffect, Suspense, lazy } from "react";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import { AnimatePresence } from "framer-motion";
+import loading from "../assets/images/logo.png";
 
 // Lazy load components
 const HeroSection = lazy(() => import("./sections/HeroSection"));
@@ -25,7 +26,7 @@ const SecurityLandingPage = () => {
 
   const LoadingFallback = () => (
     <div className="min-h-screen flex items-center justify-center">
-      <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-blue-500"></div>
+      <img src={loading} alt="Loading" className="w-40 h-40" />
     </div>
   );
 

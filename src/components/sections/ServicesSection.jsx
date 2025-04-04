@@ -6,6 +6,7 @@ import "swiper/css/pagination";
 import "swiper/css/navigation";
 import bgImage from "../../assets/images/fondoservicesection.jpg";
 import image1 from "../../assets/images/landing.jpg";
+import image2 from "../../assets/images/unnamed.jpg";
 import image3 from "../../assets/images/paginacompleta.jpg";
 import image4 from "../../assets/images/pagina informativa.png";
 import AOS from "aos";
@@ -53,30 +54,28 @@ const ServicesSection = () => {
         "Sitio web profesional con diseño responsivo y características esenciales",
       features: [
         "Sitio web responsivo.",
-        "1 pagina",
+        "1 página.",
         "Formulario de contacto.",
         "Optimización SEO básica.",
         "Ideal para marketing de productos o servicios.",
       ],
-      icon: (
-        <svg
-          width="24"
-          height="24"
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          stroke-width="2"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-        >
-          <path d="M12 2L2 7l10 5 10-5-10-5z" />
-          <path d="M12 13L2 18l10 5 10-5-10-5z" />
-          <circle cx="12" cy="12" r="8" fill="#CD7F32" />
-          <path d="M12 12L12 16" stroke="#1A1D23" stroke-width="2" />
-        </svg>
-      ),
       color: "#CD7F32",
       delay: 0,
+    },
+    {
+      title: "Landing Page + Publicidad",
+      image: image2, // Agrega la imagen correspondiente
+      description:
+        "Landing Page optimizada junto con gestión publicitaria en redes sociales.",
+      features: [
+        "Incluye todo lo del plan Landing Page.",
+        "Estrategia de publicidad en redes.",
+        "Creación y gestión de anuncios en Facebook e Instagram.",
+        "Diseño de creativos y copies optimizados.",
+        "Optimización SEO y segmentación de audiencia.",
+      ],
+      color: "#FF9800",
+      delay: 50,
     },
     {
       title: "Página web informativa",
@@ -90,24 +89,6 @@ const ServicesSection = () => {
         "Optimización SEO avanzada.",
         "Ideal para mostrar información de una empresa.",
       ],
-      icon: (
-        <svg
-          width="24"
-          height="24"
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          stroke-width="2"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-        >
-          <path d="M12 2L2 7l10 5 10-5-10-5z" />
-          <path d="M12 13L2 18l10 5 10-5-10-5z" />
-          <circle cx="12" cy="12" r="8" fill="#B1B1B1" />
-          <path d="M12 12L12 16" stroke="#1A1D23" stroke-width="2" />
-          <path d="M12 12L16 12" stroke="#1A1D23" stroke-width="2" />
-        </svg>
-      ),
       color: "#B1B1B1",
       delay: 100,
     },
@@ -124,29 +105,11 @@ const ServicesSection = () => {
         "Optimización SEO premium.",
         "Ideal para grandes empresas.",
       ],
-      icon: (
-        <svg
-          width="24"
-          height="24"
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          stroke-width="2"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-        >
-          <path d="M12 2L2 7l10 5 10-5-10-5z" />
-          <path d="M12 13L2 18l10 5 10-5-10-5z" />
-          <circle cx="12" cy="12" r="8" fill="#FFD700" />
-          <path d="M12 12L12 16" stroke="#1A1D23" stroke-width="2" />
-          <path d="M12 12L16 12" stroke="#1A1D23" stroke-width="2" />
-          <path d="M12 12L8 12" stroke="#1A1D23" stroke-width="2" />
-        </svg>
-      ),
       color: "#FFD700",
       delay: 200,
     },
   ];
+
   const handleMasInformacion = (plan) => {
     const numeroTelefono = "+5491173680952";
     const mensaje = `Hola, estoy interesado en el ${plan}, me darias mas informacion?`;
@@ -165,12 +128,6 @@ const ServicesSection = () => {
   };
 
   const handleTouchEnd = () => {
-    if (swiperRef.current?.autoplay) {
-      swiperRef.current.autoplay.start();
-    }
-  };
-
-  const handleSlideChange = () => {
     if (swiperRef.current?.autoplay) {
       swiperRef.current.autoplay.start();
     }
@@ -211,28 +168,28 @@ const ServicesSection = () => {
         ></div>
       </div>
 
-      <div className="container mx-auto px-4 relative z-10 w-full max-w-full">
+      <div className="container mx-auto px-4 relative z-10 w-full max-w-7xl">
         <h2
           className="text-3xl sm:text-4xl md:text-5xl font-light text-center mb-16 hover:text-shadow-glow transition-all duration-300"
           data-aos="fade-down"
           data-aos-duration="1000"
         >
-          Ofrecemos tres planes diferentes para satisfacer tus necesidades web.
+          Ofrecemos planes diferentes para satisfacer tus necesidades web.
         </h2>
 
-        {/* Desktop Grid */}
-        <div className="hidden md:grid md:grid-cols-3 gap-4 sm:gap-8">
-          {services.map((service, index) => (
-            <ServiceCard
-              key={index}
-              service={service}
-              handleMasInformacion={handleMasInformacion}
-            />
-          ))}
-        </div>
+        {/* Desktop Flex */}
+<div className="hidden md:flex  justify-center gap-2 lg:-mx-16">
+  {services.map((service, index) => (
+    <ServiceCard
+      key={index}
+      service={service}
+      handleMasInformacion={handleMasInformacion}
+    />
+  ))}
+</div>
 
         {/* Mobile Carousel - Simplified */}
-        <div className="md:hidden -mx-4 sm:-mx-8">
+        <div className="md:hidden -mx-4 sm:-mx-8 ">
           <Swiper
             ref={swiperRef}
             modules={[Pagination, Autoplay]}
@@ -274,9 +231,9 @@ const ServicesSection = () => {
           >
             {services.map((service, index) => (
               <SwiperSlide key={index}>
-                <div className="relative overflow-hidden rounded-xl bg-black/80 backdrop-blur-sm">
+                <div className="relative overflow-hidden rounded-xl bg-black/80 backdrop-blur-sm ">
                   {/* Imagen Principal */}
-                  <div className="relative h-40 overflow-hidden">
+                  <div className="relative h-40 overflow-hidden ">
                     <img
                       src={service.image}
                       alt={service.title}
@@ -302,7 +259,7 @@ const ServicesSection = () => {
                       {service.features.map((feature, idx) => (
                         <li
                           key={idx}
-                          className="flex items-center gap-2 text-sm text-white/90"
+                          className="flex items-center gap-2 text- text-white/90"
                         >
                           <svg
                             className="w-4 h-4 text-[#2980B9]"
@@ -449,25 +406,24 @@ const ServicesSection = () => {
 // ServiceCard Component
 const ServiceCard = ({ service, handleMasInformacion }) => (
   <div
-    className="relative group w-full max-w-full"
+    className="relative group"
     data-aos="fade-up"
     data-aos-delay={service.delay}
     data-aos-duration="1000"
   >
     <div
-      className="relative overflow-hidden rounded-xl shadow-2xl bg-black/80 backdrop-blur-sm 
-      transform transition-all duration-500 group-hover:scale-105 group-hover:shadow-2xl 
-      group-hover:shadow-[#2980B9]/20 border border-white/10 group-hover:border-white/30
-      w-full max-w-full"
-    >
+  className="overflow-hidden rounded-xl shadow-2xl bg-black/80 backdrop-blur-sm 
+  transform transition-all duration-500 group-hover:scale-105 group-hover:shadow-2xl 
+  group-hover:shadow-[#2980B9]/20 border border-white/10 group-hover:border-white/30
+  h-full flex flex-col w-full max-w-[20rem]"
+>
       {/* Imagen Principal */}
-      <div className="relative h-48 overflow-hidden">
+      <div className="relative h-52 overflow-hidden">
         <img
           src={service.image}
           alt={service.title}
           className="w-full h-full object-cover transform transition-all duration-700 
           group-hover:scale-110 group-hover:brightness-75"
-          style={{ maxWidth: "100%" }}
         />
         <div
           className="absolute inset-0 bg-gradient-to-t from-black/40 via-black/50 to-transparent 
@@ -476,31 +432,31 @@ const ServiceCard = ({ service, handleMasInformacion }) => (
       </div>
 
       {/* Contenido */}
-      <div className="p-6">
+      <div className="p-6 flex-grow flex flex-col">
         {/* Icono y Título */}
         <div className="flex items-center gap-3 mb-4">
           <div
-            className={`p-2 bg-[#2980B9] border-red-100 border-2 rounded-lg transform transition-all duration-300 
-            group-hover:scale-110 group-hover:rotate-6 `}
+            className="p-2 rounded-lg transform transition-all duration-300 
+            group-hover:scale-110 group-hover:rotate-6"
             style={{ backgroundColor: service.color }}
           >
             {service.icon}
           </div>
-          <h3 className="text-2xl font-light group-hover:text-shadow-glow transition-all duration-300">
+          <h3 className="text-xl md:text-2xl font-light group-hover:text-shadow-glow transition-all duration-300">
             {service.title}
           </h3>
         </div>
 
         {/* Características */}
-        <ul className="space-y-2 mb-6">
+        <ul className="space-y-2 mb-6 flex-grow">
           {service.features.map((feature, idx) => (
             <li
               key={idx}
-              className="flex items-center gap-2 text-white
-              transform transition-all duration-300 hover:translate-x-2 group-hover:text-white lg:text-lg"
+              className="flex items-start gap-2 text-white/90 hover:text-white
+              transform transition-all duration-300 hover:translate-x-2"
             >
               <svg
-                className="w-10 h-10 text-[#2980B9]"
+                className="w-5 h-5 mt-0.5 text-[#2980B9] flex-shrink-0"
                 fill="none"
                 stroke="currentColor"
                 viewBox="0 0 24 24"
@@ -512,7 +468,7 @@ const ServiceCard = ({ service, handleMasInformacion }) => (
                   d="M9 12l2 2 4-4"
                 />
               </svg>
-              {feature}
+              <span className="text-sm lg:text-base">{feature}</span>
             </li>
           ))}
         </ul>
@@ -544,5 +500,6 @@ const ServiceCard = ({ service, handleMasInformacion }) => (
     </div>
   </div>
 );
+
 
 export default ServicesSection;
