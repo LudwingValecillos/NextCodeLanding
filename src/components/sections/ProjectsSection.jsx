@@ -8,7 +8,6 @@ import AOS from "aos";
 import "aos/dist/aos.css";
 
 const ProjectsSection = () => {
-  const [isVisible, setIsVisible] = useState(false);
   const sectionRef = useRef(null);
 
   useEffect(() => {
@@ -123,14 +122,10 @@ const ProjectsSection = () => {
               bulletActiveClass: "swiper-pagination-bullet-active bg-blue-400",
               bulletClass: "swiper-pagination-bullet bg-white/50",
             }}
-            autoplay={
-              isVisible
-                ? {
-                    delay: 5000,
-                    disableOnInteraction: true,
-                  }
-                : false
-            }
+            autoplay={{
+              delay: 5000,
+              disableOnInteraction: true,
+            }}
             className="w-full pb-12"
           >
             {testimonials.map((testimonial, index) => (

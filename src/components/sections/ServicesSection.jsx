@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Pagination, Autoplay, Navigation } from "swiper/modules";
+import { Pagination, Autoplay } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
@@ -25,23 +25,25 @@ const ServicesSection = () => {
         mirror: true,
       });
     }
-
+  
+    const currentSection = sectionRef.current; // Copiamos la referencia
+  
     const observer = new IntersectionObserver(
       ([entry]) => {
         setIsVisible(entry.isIntersecting);
       },
       {
-        threshold: 0.2, // Trigger when 20% of the section is visible
+        threshold: 0.2, // Se activa cuando el 20% de la sección es visible
       }
     );
-
-    if (sectionRef.current) {
-      observer.observe(sectionRef.current);
+  
+    if (currentSection) {
+      observer.observe(currentSection);
     }
-
+  
     return () => {
-      if (sectionRef.current) {
-        observer.unobserve(sectionRef.current);
+      if (currentSection) {
+        observer.unobserve(currentSection);
       }
     };
   }, []);
