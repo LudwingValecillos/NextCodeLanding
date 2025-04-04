@@ -1,4 +1,9 @@
 import React from "react";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Pagination, Autoplay, Navigation } from "swiper/modules";
+import "swiper/css";
+import "swiper/css/pagination";
+import "swiper/css/navigation";
 import bgImage from "../../assets/images/fondoservicesection.jpg";
 import image1 from "../../assets/images/landing.jpg";
 import image3 from "../../assets/images/paginacompleta.jpg";
@@ -153,109 +158,166 @@ const ServicesSection = () => {
         >
           Ofrecemos tres planes diferentes para satisfacer tus necesidades web.
         </h2>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-8">
+
+        {/* Desktop Grid */}
+        <div className="hidden md:grid md:grid-cols-3 gap-4 sm:gap-8">
           {services.map((service, index) => (
-            <div
+            <ServiceCard
               key={index}
-              className="relative group w-full max-w-full"
-              data-aos="fade-up"
-              data-aos-delay={service.delay}
-              data-aos-duration="1000"
-            >
-              <div
-                className="relative overflow-hidden rounded-xl shadow-2xl bg-black/80 backdrop-blur-sm 
-                transform transition-all duration-500 group-hover:scale-105 group-hover:shadow-2xl 
-                group-hover:shadow-[#2980B9]/20 border border-white/10 group-hover:border-white/30
-                w-full max-w-full"
-              >
-                {/* Imagen Principal */}
-                <div className="relative h-48 overflow-hidden">
-                  <img
-                    src={service.image}
-                    alt={service.title}
-                    className="w-full h-full object-cover transform transition-all duration-700 
-                    group-hover:scale-110 group-hover:brightness-75"
-                    style={{ maxWidth: "100%" }}
-                  />
-                  <div
-                    className="absolute inset-0 bg-gradient-to-t from-black/40 via-black/50 to-transparent 
-                    opacity-60 group-hover:opacity-80 transition-all duration-500"
-                  ></div>
-                </div>
-
-                {/* Contenido */}
-                <div className="p-6">
-                  {/* Icono y Título */}
-                  <div className="flex items-center gap-3 mb-4">
-                    <div
-                      className={`p-2 bg-[#2980B9] border-red-100 border-2 rounded-lg transform transition-all duration-300 
-                      group-hover:scale-110 group-hover:rotate-6 `}
-                      style={{ backgroundColor: service.color }}
-                    >
-                      {service.icon}
-                    </div>
-                    <h3 className="text-2xl font-light group-hover:text-shadow-glow transition-all duration-300">
-                      {service.title}
-                    </h3>
-                  </div>
-
-                  {/* Características */}
-                  <ul className="space-y-2 mb-6">
-                    {service.features.map((feature, idx) => (
-                      <li
-                        key={idx}
-                        className="flex items-center gap-2  text-white
-                        transform transition-all duration-300 hover:translate-x-2 group-hover:text-white lg:text-lg"
-                      >
-                        <svg
-                          className="w-10 h-10 text-[#2980B9]"
-                          fill="none"
-                          stroke="currentColor"
-                          viewBox="0 0 24 24"
-                        >
-                          <path
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                            strokeWidth={2}
-                            d="M9 12l2 2 4-4"
-                          />
-                        </svg>
-                        {feature}
-                      </li>
-                    ))}
-                  </ul>
-
-                  {/* Botón */}
-                  <button
-                    className="w-full bg-[#20A366] text-white px-6 py-3 rounded-lg text-sm 
-  transform transition-all duration-500 
-  hover:bg-white hover:text-[#2980B9] hover:scale-105 hover:shadow-lg
-  group-hover:translate-y-0 flex items-center justify-center gap-2"
-                    onClick={() => handleMasInformacion(service.title)}
-                  >
-                    <span>Más información</span>
-                    <svg
-                      className="w-4 h-4 transform transition-transform duration-300 group-hover:translate-x-1"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M13 7l5 5m0 0l-5 5m5-5H6"
-                      />
-                    </svg>
-                  </button>
-                </div>
-              </div>
-            </div>
+              service={service}
+              handleMasInformacion={handleMasInformacion}
+            />
           ))}
+        </div>
+
+        {/* Mobile Carousel */}
+        <div className="md:hidden relative">
+          <Swiper
+            modules={[Pagination, Autoplay, Navigation]}
+            spaceBetween={20}
+            slidesPerView={1}
+            speed={800}
+            pagination={{
+              clickable: true,
+              el: ".swiper-pagination",
+              bulletActiveClass: "swiper-pagination-bullet-active bg-white",
+              bulletClass: "swiper-pagination-bullet bg-white/50",
+            }}
+            navigation={{
+              nextEl: ".swiper-button-next",
+              prevEl: ".swiper-button-prev",
+              color: "#ffffff",
+            }}
+            autoplay={{
+              delay: 5000,
+              disableOnInteraction: true,
+              pauseOnMouseEnter: true,
+            }}
+            className="w-full pb-12"
+            onTouchStart={() => {
+              const swiper = document.querySelector(".swiper").swiper;
+              swiper.autoplay.stop();
+            }}
+            onTouchEnd={() => {
+              const swiper = document.querySelector(".swiper").swiper;
+              swiper.autoplay.start();
+            }}
+          >
+            {services.map((service, index) => (
+              <SwiperSlide key={index}>
+                <ServiceCard
+                  service={service}
+                  handleMasInformacion={handleMasInformacion}
+                />
+              </SwiperSlide>
+            ))}
+            <div className="swiper-pagination"></div>
+            <div className="swiper-button-prev"></div>
+            <div className="swiper-button-next"></div>
+          </Swiper>
         </div>
       </div>
     </section>
   );
 };
+
+// ServiceCard Component
+const ServiceCard = ({ service, handleMasInformacion }) => (
+  <div
+    className="relative group w-full max-w-full"
+    data-aos="fade-up"
+    data-aos-delay={service.delay}
+    data-aos-duration="1000"
+  >
+    <div
+      className="relative overflow-hidden rounded-xl shadow-2xl bg-black/80 backdrop-blur-sm 
+      transform transition-all duration-500 group-hover:scale-105 group-hover:shadow-2xl 
+      group-hover:shadow-[#2980B9]/20 border border-white/10 group-hover:border-white/30
+      w-full max-w-full"
+    >
+      {/* Imagen Principal */}
+      <div className="relative h-48 overflow-hidden">
+        <img
+          src={service.image}
+          alt={service.title}
+          className="w-full h-full object-cover transform transition-all duration-700 
+          group-hover:scale-110 group-hover:brightness-75"
+          style={{ maxWidth: "100%" }}
+        />
+        <div
+          className="absolute inset-0 bg-gradient-to-t from-black/40 via-black/50 to-transparent 
+          opacity-60 group-hover:opacity-80 transition-all duration-500"
+        ></div>
+      </div>
+
+      {/* Contenido */}
+      <div className="p-6">
+        {/* Icono y Título */}
+        <div className="flex items-center gap-3 mb-4">
+          <div
+            className={`p-2 bg-[#2980B9] border-red-100 border-2 rounded-lg transform transition-all duration-300 
+            group-hover:scale-110 group-hover:rotate-6 `}
+            style={{ backgroundColor: service.color }}
+          >
+            {service.icon}
+          </div>
+          <h3 className="text-2xl font-light group-hover:text-shadow-glow transition-all duration-300">
+            {service.title}
+          </h3>
+        </div>
+
+        {/* Características */}
+        <ul className="space-y-2 mb-6">
+          {service.features.map((feature, idx) => (
+            <li
+              key={idx}
+              className="flex items-center gap-2 text-white
+              transform transition-all duration-300 hover:translate-x-2 group-hover:text-white lg:text-lg"
+            >
+              <svg
+                className="w-10 h-10 text-[#2980B9]"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M9 12l2 2 4-4"
+                />
+              </svg>
+              {feature}
+            </li>
+          ))}
+        </ul>
+
+        {/* Botón */}
+        <button
+          className="w-full bg-[#20A366] text-white px-6 py-3 rounded-lg text-sm 
+          transform transition-all duration-500 
+          hover:bg-white hover:text-[#2980B9] hover:scale-105 hover:shadow-lg
+          group-hover:translate-y-0 flex items-center justify-center gap-2"
+          onClick={() => handleMasInformacion(service.title)}
+        >
+          <span>Más información</span>
+          <svg
+            className="w-4 h-4 transform transition-transform duration-300 group-hover:translate-x-1"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth={2}
+              d="M13 7l5 5m0 0l-5 5m5-5H6"
+            />
+          </svg>
+        </button>
+      </div>
+    </div>
+  </div>
+);
 
 export default ServicesSection;

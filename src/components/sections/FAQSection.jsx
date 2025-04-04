@@ -28,12 +28,12 @@ const FAQSection = () => {
   ];
 
   return (
-    <section 
-      className="py-16 bg-black relative overflow-hidden -mt-5 w-screen" 
+    <section
+      className="py-16 bg-black relative overflow-hidden -mt-5 w-screen"
       style={{
-        marginLeft: 'calc(-50vw + 50%)',
-        marginRight: 'calc(-50vw + 50%)',
-        width: '100vw'
+        marginLeft: "calc(-50vw + 50%)",
+        marginRight: "calc(-50vw + 50%)",
+        width: "100vw",
       }}
     >
       {/* Difumiado superior para transición desde Testimonios */}
@@ -81,7 +81,9 @@ const FAQSection = () => {
               >
                 <button
                   className="w-full px-6 py-4 text-left flex justify-between items-center hover:bg-[#20A366]/10 transition-all duration-300"
-                  onClick={() => setActiveIndex(activeIndex === index ? null : index)}
+                  onClick={() =>
+                    setActiveIndex(activeIndex === index ? null : index)
+                  }
                 >
                   <h3 className="text-white font-medium text-lg group-hover:text-[#20A366]">
                     {faq.question}
