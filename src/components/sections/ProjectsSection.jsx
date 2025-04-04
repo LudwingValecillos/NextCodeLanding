@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Pagination, Autoplay } from "swiper/modules";
 import "swiper/css";
@@ -8,6 +8,9 @@ import AOS from "aos";
 import "aos/dist/aos.css";
 
 const ProjectsSection = () => {
+  const [isVisible, setIsVisible] = useState(false);
+  const sectionRef = useRef(null);
+
   useEffect(() => {
     if (typeof AOS !== "undefined") {
       AOS.init({
@@ -69,6 +72,7 @@ const ProjectsSection = () => {
 
   return (
     <section
+      ref={sectionRef}
       className="py-16 relative overflow-hidden -mt-16"
       style={{
         backgroundImage: `url(${image})`,
@@ -119,10 +123,14 @@ const ProjectsSection = () => {
               bulletActiveClass: "swiper-pagination-bullet-active bg-blue-400",
               bulletClass: "swiper-pagination-bullet bg-white/50",
             }}
-            autoplay={{
-              delay: 5000,
-              disableOnInteraction: true,
-            }}
+            autoplay={
+              isVisible
+                ? {
+                    delay: 5000,
+                    disableOnInteraction: true,
+                  }
+                : false
+            }
             className="w-full pb-12"
           >
             {testimonials.map((testimonial, index) => (

@@ -1,6 +1,6 @@
 import React from "react";
 import nvrImage from "../../assets/images/presenciadigital.png";
-import nvrImage2 from "../../assets/images/nvr-image.jpg";
+import nvrImage2 from "../../assets/images/presenciadigital.png";
 import { motion } from "framer-motion";
 
 const NVRSection = () => {
