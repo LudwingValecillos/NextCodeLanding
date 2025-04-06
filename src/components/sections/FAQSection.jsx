@@ -8,7 +8,7 @@ const FAQSection = () => {
     {
       question: "¿Cuánto tiempo toma desarrollar un sitio web?",
       answer:
-        "El tiempo de desarrollo varía según la complejidad del proyecto. Un sitio web básico puede tomar 2-3 semanas, mientras que uno más complejo puede tomar 1-2 meses.",
+        "El tiempo de desarrollo varía según la complejidad del proyecto. Un sitio web básico puede tomar 2 dias a una semana, mientras que uno más complejo puede tomar 1-2 meses.",
     },
     {
       question: "¿Qué tecnologías utilizan?",
