@@ -4,7 +4,6 @@ import { Pagination, Autoplay } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
-import image from "../../assets/images/projectsection.jpg";
 import AOS from "aos";
 import "aos/dist/aos.css";
 
