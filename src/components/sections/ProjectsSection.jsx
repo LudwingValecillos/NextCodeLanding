@@ -147,7 +147,7 @@ const ProjectsSection = () => {
           </span>
         </h2>
         <p
-          className="text-lg text-gray-300 mb-12 max-w-2xl mx-auto text-center"
+          className="text-lg text-gray-300 mb-16 max-w-2xl mx-auto text-center"
           data-aos="fade-down"
           data-aos-delay="100"
         >
@@ -159,25 +159,25 @@ const ProjectsSection = () => {
           <Swiper
             ref={swiperRef}
             modules={[Pagination, Autoplay]}
-            spaceBetween={24}
-            slidesPerView={1.2}
-            centeredSlides={true}
-            speed={400}
+            spaceBetween={32}
+            slidesPerView={3.5}
+            centeredSlides={false}
+            speed={800}
             pagination={{
               clickable: true,
               el: ".swiper-pagination",
-              bulletActiveClass: "swiper-pagination-bullet-active bg-white",
-              bulletClass: "swiper-pagination-bullet bg-white/30",
+              bulletActiveClass:
+                "swiper-pagination-bullet-active !bg-[#20A366]",
+              bulletClass:
+                "swiper-pagination-bullet !bg-white/50 !w-3 !h-3 !opacity-100",
             }}
-            autoplay={
-              isVisible
-                ? {
-                    delay: 4000,
-                    disableOnInteraction: false,
-                  }
-                : false
-            }
-            className="w-full pb-12 px-4"
+            autoplay={{
+              delay: 8000,
+              disableOnInteraction: false,
+              pauseOnMouseEnter: true,
+              waitForTransition: true,
+            }}
+            className="w-full pb-20 px-4"
             onTouchStart={handleTouchStart}
             onTouchEnd={handleTouchEnd}
             breakpoints={{
@@ -197,17 +197,17 @@ const ProjectsSection = () => {
                 centeredSlides: true,
               },
               768: {
-                slidesPerView: 2,
+                slidesPerView: 2.5,
                 spaceBetween: 24,
                 centeredSlides: false,
               },
               1024: {
-                slidesPerView: 3,
+                slidesPerView: 3.5,
                 spaceBetween: 32,
                 centeredSlides: false,
               },
               1280: {
-                slidesPerView: 3,
+                slidesPerView: 3.5,
                 spaceBetween: 40,
                 centeredSlides: false,
               },
@@ -218,7 +218,7 @@ const ProjectsSection = () => {
                 <ProjectCard project={project} index={index} />
               </SwiperSlide>
             ))}
-            <div className="swiper-pagination !-bottom-2"></div>
+            <div className="swiper-pagination !bottom-0 !mt-20 flex justify-center items-center"></div>
           </Swiper>
         </div>
       </div>
@@ -234,9 +234,9 @@ const ProjectCard = ({ project, index }) => (
     data-aos-delay={index * 100}
     data-aos-duration="1000"
   >
-    <div className="overflow-hidden rounded-xl shadow-2xl bg-black/80 backdrop-blur-sm transform transition-all duration-500 group-hover:scale-105 group-hover:shadow-2xl group-hover:shadow-[#20A366]/20 border border-white/10 group-hover:border-white/30 h-full w-full">
+    <div className="overflow-hidden rounded-xl shadow-2xl bg-black/80 backdrop-blur-sm transform transition-all duration-500 group-hover:scale-105 group-hover:shadow-2xl group-hover:shadow-[#20A366]/20 border-2 border-white/10 group-hover:border-white/30 h-full w-full">
       {/* Imagen Principal */}
-      <div className="relative h-52 overflow-hidden">
+      <div className="relative h-64 overflow-hidden">
         <img
           src={project.image}
           alt={project.title}
