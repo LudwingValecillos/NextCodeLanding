@@ -1,10 +1,9 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef } from "react";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import image from "../../assets/images/presenciadigital.png";
 
 const FeaturesAndBenefitsSection = () => {
-  const [isVisible, setIsVisible] = useState(false);
   const sectionRef = useRef(null);
 
   useEffect(() => {
@@ -20,7 +19,7 @@ const FeaturesAndBenefitsSection = () => {
 
     const observer = new IntersectionObserver(
       ([entry]) => {
-        setIsVisible(entry.isIntersecting);
+        // The isVisible state is no longer used in the component
       },
       {
         threshold: 0.2,

@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Pagination, Autoplay } from "swiper/modules";
 import "swiper/css";
@@ -8,7 +8,6 @@ import AOS from "aos";
 import "aos/dist/aos.css";
 
 const ProjectsSection = () => {
-  const [isVisible, setIsVisible] = useState(false);
   const sectionRef = useRef(null);
   const swiperRef = useRef(null);
 
@@ -25,7 +24,7 @@ const ProjectsSection = () => {
 
     const observer = new IntersectionObserver(
       ([entry]) => {
-        setIsVisible(entry.isIntersecting);
+        // The isVisible state is no longer used in the component
       },
       {
         threshold: 0.2,
@@ -131,6 +130,24 @@ const ProjectsSection = () => {
       data-aos="fade-in"
       data-aos-duration="1000"
     >
+      <style jsx>{`
+        .swiper-pagination-bullet {
+          background: rgba(255, 255, 255, 0.5) !important;
+          opacity: 1 !important;
+          width: 12px !important;
+          height: 12px !important;
+          margin: 0 8px !important;
+          transition: all 0.3s ease !important;
+        }
+        .swiper-pagination-bullet-active {
+          background: #20a366 !important;
+          transform: scale(1.2) !important;
+        }
+        .swiper-pagination {
+          position: relative !important;
+          margin-top: 2rem !important;
+        }
+      `}</style>
       {/* Background Pattern */}
       <div className="absolute inset-0 opacity-10">
         <div className="absolute inset-0 bg-grid-white/[0.2] bg-[length:20px_20px] animate-subtle-zoom"></div>
