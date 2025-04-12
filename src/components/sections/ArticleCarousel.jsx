@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Pagination, Autoplay } from "swiper/modules";
 import "swiper/css";
@@ -7,10 +7,30 @@ import "swiper/css/navigation";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import Article from "../ArticleCard";
+import { getRandomArticles } from "../../articles/articles";
 
-const ArticleCarousel = ({ articles = [] }) => {
+const ArticleCarousel = () => {
   const sectionRef = useRef(null);
   const swiperRef = useRef(null);
+  const [articles, setArticles] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+
+  useEffect(() => {
+    const loadArticles = async () => {
+      try {
+        const featuredArticles = await getRandomArticles();
+        setArticles(featuredArticles || []);
+      } catch (err) {
+        console.error("Error loading featured articles:", err);
+        setError("Error al cargar los artículos destacados");
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    loadArticles();
+  }, []);
 
   useEffect(() => {
     if (typeof AOS !== "undefined") {
@@ -55,10 +75,26 @@ const ArticleCarousel = ({ articles = [] }) => {
     }
   };
 
+  if (loading) {
+    return (
+      <div className="min-h-[400px] flex items-center justify-center">
+        <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-[#20A366]"></div>
+      </div>
+    );
+  }
+
+  if (error) {
+    return (
+      <div className="min-h-[400px] flex items-center justify-center">
+        <p className="text-red-500">{error}</p>
+      </div>
+    );
+  }
+
   if (!articles || articles.length === 0) {
     return (
-      <div className="article-carousel">
-        <p>No hay artículos disponibles</p>
+      <div className="min-h-[400px] flex items-center justify-center">
+        <p className="text-gray-400">No hay artículos destacados disponibles</p>
       </div>
     );
   }
@@ -177,9 +213,9 @@ const ArticleCarousel = ({ articles = [] }) => {
               },
             }}
           >
-            {articles.map((article, index) => (
+            {articles.map((article) => (
               <SwiperSlide key={article.id} className="flex justify-center">
-                <Article article={article} index={index} />
+                <Article article={article} />
               </SwiperSlide>
             ))}
             <div className="swiper-pagination !bottom-0 !mt-20 flex justify-center items-center"></div>

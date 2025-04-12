@@ -2,12 +2,14 @@ import React, { useEffect, lazy, Suspense } from "react";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import { AnimatePresence } from "framer-motion";
-import Article from "../components/ArticleCard";
-import {
-  articles,
-  getArticleById,
-  getLatestArticles,
-} from "../articles/articles";
+import { getLatestArticles } from "../articles/articles";
+
+// Add preload links for critical resources
+const preloadLinks = [
+  { href: "/assets/images/fondohero.avif", as: "image", type: "image/avif" },
+  { href: "/assets/images/sinfondoaa.png", as: "image", type: "image/png" },
+  { href: "aos/dist/aos.css", as: "style" },
+];
 
 // Lazy load components
 const HeroSection = lazy(() => import("../components/sections/HeroSection"));
@@ -35,16 +37,40 @@ const DesignProposalSection = lazy(() =>
 
 const SecurityLandingPage = () => {
   useEffect(() => {
+    // Initialize AOS with optimized settings
     AOS.init({
       duration: 800,
       once: true,
+      offset: 100,
+      delay: 100,
+      disable: window.innerWidth < 768, // Disable on mobile
     });
+
+    return () => {
+      AOS.refresh();
+    };
   }, []);
 
   return (
     <AnimatePresence mode="wait">
       <div className="font-sans">
-        <Suspense>
+        {/* Add preload links */}
+        {preloadLinks.map((link, index) => (
+          <link
+            key={index}
+            rel="preload"
+            href={link.href}
+            as={link.as}
+            type={link.type}
+          />
+        ))}
+        <Suspense
+          fallback={
+            <div className="min-h-screen bg-gradient-to-b from-gray-900 to-black flex items-center justify-center">
+              <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-[#20A366]"></div>
+            </div>
+          }
+        >
           <HeroSection />
           <AboutSection />
           <ServicesSection />
@@ -53,7 +79,6 @@ const SecurityLandingPage = () => {
           <ProjectsSection />
           <FAQSection />
           <ArticleCarousel articles={getLatestArticles()} />
-
           <ContactSection />
           <WhatsAppButton />
         </Suspense>
