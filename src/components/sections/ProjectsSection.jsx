@@ -130,7 +130,7 @@ const ProjectsSection = () => {
       data-aos="fade-in"
       data-aos-duration="1000"
     >
-      <style jsx>{`
+      <style jsx="true">{`
         .swiper-pagination-bullet {
           background: rgba(255, 255, 255, 0.5) !important;
           opacity: 1 !important;
@@ -175,7 +175,7 @@ const ProjectsSection = () => {
         <div className="-mx-4 sm:-mx-8 md:-mx-12 lg:-mx-24">
           <Swiper
             ref={swiperRef}
-            modules={[Pagination, Autoplay]}
+            modules={[Pagination]}
             spaceBetween={32}
             slidesPerView={3.5}
             centeredSlides={false}

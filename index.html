@@ -54,6 +54,8 @@
     <!-- Preconnect to external domains -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preconnect" href="https://pagead2.googlesyndication.com" />
+    <link rel="preconnect" href="https://googleads.g.doubleclick.net" />
 
     <!-- Fonts -->
     <link
@@ -62,8 +64,18 @@
     />
 
     <!-- Preload critical assets -->
-    <link rel="preload" href="/hero-image.webp" as="image" />
-    <link rel="preload" href="/about-image.webp" as="image" />
+    <link
+      rel="preload"
+      href="/assets/images/hero-image.webp"
+      as="image"
+      type="image/webp"
+    />
+    <link
+      rel="preload"
+      href="/assets/images/about-image.webp"
+      as="image"
+      type="image/webp"
+    />
 
     <!-- Canonical URL -->
     <link rel="canonical" href="https://tusitio.com/" />
@@ -89,10 +101,16 @@
         }
       }
     </script>
+
+    <!-- Google Ads -->
+    <script
+      async
+      src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXXXXXXXXXX"
+      crossorigin="anonymous"
+    ></script>
   </head>
   <body>
     <div id="root"></div>
-    <script type="module" src="/src/main.jsx"></script>
 
     <!-- Google Analytics -->
     <script
@@ -106,6 +124,34 @@
       }
       gtag("js", new Date());
       gtag("config", "G-XXXXXXXXXX");
+    </script>
+
+    <!-- Performance Optimization -->
+    <script type="module" src="/src/main.jsx" defer></script>
+
+    <!-- Article Schema -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Article",
+        "headline": "Desarrollo Web Profesional",
+        "image": "https://tusitio.com/og-image.jpg",
+        "author": {
+          "@type": "Person",
+          "name": "Tu Nombre"
+        },
+        "publisher": {
+          "@type": "Organization",
+          "name": "Tu Empresa",
+          "logo": {
+            "@type": "ImageObject",
+            "url": "https://tusitio.com/logo.png"
+          }
+        },
+        "datePublished": "2024-01-01",
+        "dateModified": "2024-01-01",
+        "description": "Creamos sitios web modernos, responsivos y optimizados para SEO."
+      }
     </script>
   </body>
 </html>

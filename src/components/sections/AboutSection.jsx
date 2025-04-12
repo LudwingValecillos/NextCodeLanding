@@ -88,7 +88,12 @@ const AboutSection = () => {
             data-aos-delay="500"
             whileHover={{ scale: 1.02 }}
           >
-            <p className="text-white text-center lg:text-xl" data-aos="fade-up" data-aos-duration="800" data-aos-delay="200">
+            <p
+              className="text-white text-center lg:text-xl"
+              data-aos="fade-up"
+              data-aos-duration="800"
+              data-aos-delay="200"
+            >
               Desarrollamos soluciones web empresariales de alto rendimiento,
               implementando las últimas tecnologías y mejores prácticas de la
               industria para garantizar resultados excepcionales y una
@@ -115,7 +120,7 @@ const AboutSection = () => {
           >
             <div className="rounded-lg overflow-hidden shadow-md relative">
               <img
-                src="https://images.unsplash.com/photo-1551434678-e076c223a692?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80"
+                src="/about-image.webp"
                 alt="Tecnología Web"
                 className="w-full object-cover"
                 style={{ height: "280px" }}

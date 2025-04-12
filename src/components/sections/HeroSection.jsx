@@ -5,8 +5,12 @@ import "aos/dist/aos.css";
 import heroImage from "../../assets/images/fondohero.avif";
 import image2 from "../../assets/images/2.webp";
 import logo from "../../assets/images/sinfondoaa.png";
+import { useLocation } from "react-router-dom";
 
 const HeroSection = () => {
+  const location = useLocation();
+  const isHomePage = location.pathname === "/";
+
   useEffect(() => {
     AOS.init({
       duration: 1000,
@@ -142,52 +146,60 @@ const HeroSection = () => {
               data-aos-duration="800"
               data-aos-delay="400"
             >
-              <motion.button
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className="px-8 py-4 bg-[#20A366] text-white rounded-lg text-lg font-semibold
-                transform transition-all duration-300 hover:shadow-lg hover:shadow-[#20A366]/30
-                flex items-center justify-center gap-2 group relative overflow-hidden"
-                onClick={() => {
-                  const contactoDiv = document.getElementById("contacto");
-                  contactoDiv.scrollIntoView({ behavior: "smooth" });
-                }}
-              >
-                <span className="relative z-10">Comenzar Proyecto</span>
-                <motion.div
-                  className="absolute inset-0 bg-white"
-                  initial={{ scale: 0, opacity: 0 }}
-                  whileHover={{ scale: 1, opacity: 0.1 }}
-                  transition={{ duration: 0.3 }}
-                />
-              </motion.button>
-              <motion.button
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className="px-8 py-4 bg-white/80 border-2 border-white text-black hover:text-white rounded-lg text-lg font-semibold
-                transform transition-all duration-300 hover:bg-white/10
-                flex items-center justify-center gap-2 group"
-                onClick={() => {
-                  const contactoDiv = document.getElementById("servicios");
-                  contactoDiv.scrollIntoView({ behavior: "smooth" });
-                }}
-              >
-                <span>Ver planes</span>
-                <motion.svg
-                  className="w-5 h-5"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                  whileHover={{ x: 5 }}
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M13 7l5 5m0 0l-5 5m5-5H6"
-                  />
-                </motion.svg>
-              </motion.button>
+              {isHomePage && (
+                <>
+                  <motion.button
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
+                    className="px-8 py-4 bg-[#20A366] text-white rounded-lg text-lg font-semibold
+                    transform transition-all duration-300 hover:shadow-lg hover:shadow-[#20A366]/30
+                    flex items-center justify-center gap-2 group relative overflow-hidden"
+                    onClick={() => {
+                      const contactoDiv = document.getElementById("contact");
+                      if (contactoDiv) {
+                        contactoDiv.scrollIntoView({ behavior: "smooth" });
+                      }
+                    }}
+                  >
+                    <span className="relative z-10">Comenzar Proyecto</span>
+                    <motion.div
+                      className="absolute inset-0 bg-white"
+                      initial={{ scale: 0, opacity: 0 }}
+                      whileHover={{ scale: 1, opacity: 0.1 }}
+                      transition={{ duration: 0.3 }}
+                    />
+                  </motion.button>
+                  <motion.button
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
+                    className="px-8 py-4 bg-white/80 border-2 border-white text-black hover:text-white rounded-lg text-lg font-semibold
+                    transform transition-all duration-300 hover:bg-white/10
+                    flex items-center justify-center gap-2 group"
+                    onClick={() => {
+                      const serviciosDiv = document.getElementById("servicios");
+                      if (serviciosDiv) {
+                        serviciosDiv.scrollIntoView({ behavior: "smooth" });
+                      }
+                    }}
+                  >
+                    <span>Ver planes</span>
+                    <motion.svg
+                      className="w-5 h-5"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                      whileHover={{ x: 5 }}
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M13 7l5 5m0 0l-5 5m5-5H6"
+                      />
+                    </motion.svg>
+                  </motion.button>
+                </>
+              )}
             </motion.div>
 
             {/* Features Grid */}
