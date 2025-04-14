@@ -102,7 +102,7 @@ const ArticleCarousel = () => {
   return (
     <section
       ref={sectionRef}
-      className="py-20 text-white relative overflow-hidden"
+      className="py-12 md:py-20 text-white relative overflow-hidden"
       style={{
         background: "linear-gradient(to bottom, #1a1a1a, #000000)",
       }}
@@ -126,6 +126,12 @@ const ArticleCarousel = () => {
           position: relative !important;
           margin-top: 2rem !important;
         }
+        .swiper-slide {
+          height: auto !important;
+          display: flex !important;
+          align-items: center !important;
+          justify-content: center !important;
+        }
       `}</style>
       {/* Background Pattern */}
       <div className="absolute inset-0 opacity-10">
@@ -134,7 +140,7 @@ const ArticleCarousel = () => {
 
       <div className="container mx-auto px-4 relative z-10">
         <h2
-          className="text-3xl md:text-4xl font-bold text-white mb-6 text-center"
+          className="text-2xl md:text-4xl font-bold text-white mb-4 md:mb-6 text-center"
           data-aos="fade-down"
         >
           Artículos{" "}
@@ -143,19 +149,22 @@ const ArticleCarousel = () => {
           </span>
         </h2>
         <p
-          className="text-lg text-gray-300 max-w-2xl mx-auto text-center"
+          className="text-base md:text-lg text-gray-300 max-w-2xl mx-auto text-center mb-4 md:mb-6"
           data-aos="fade-down"
           data-aos-delay="100"
         >
           Descubre nuestros artículos más recientes
         </p>
-        <a href="/articles" className="text-white text-end block my-4 lg:mb-4">
-          <span className="text-white mb-2 font-bold text-end bg-[#20A366] rounded-xl px-4 py-2 hover:bg-[#20A366] transition-all duration-300 cursor-pointer hover:scale-105">
+        <a
+          href="/articles"
+          className="text-white text-center block mb-6 md:mb-8"
+        >
+          <span className="inline-block text-white font-bold bg-[#20A366] rounded-xl px-4 py-2 hover:bg-[#20A366] transition-all duration-300 cursor-pointer hover:scale-105">
             Ver todos los artículos
           </span>
         </a>
         {/* Desktop & Mobile Carousel */}
-        <div className="-mx-4 sm:-mx-8 md:-mx-12 lg:-mx-24">
+        <div className="w-full">
           <Swiper
             ref={swiperRef}
             modules={[Pagination]}
@@ -171,7 +180,7 @@ const ArticleCarousel = () => {
               bulletClass:
                 "swiper-pagination-bullet !bg-white/50 !w-3 !h-3 !opacity-100",
             }}
-            className="w-full pb-20 px-4"
+            className="w-full pb-20"
             onTouchStart={handleTouchStart}
             onTouchEnd={handleTouchEnd}
             breakpoints={{
