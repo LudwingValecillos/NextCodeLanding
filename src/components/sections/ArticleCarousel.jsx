@@ -11,15 +11,29 @@ import { getRandomArticles } from "../../articles/articles";
 
 const ArticleCarousel = () => {
   const sectionRef = useRef(null);
-  const swiperRef = useRef(null);
+  const [swiperInstance, setSwiperInstance] = useState(null);
   const [articles, setArticles] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [swiperError, setSwiperError] = useState(false);
+  const [isMounted, setIsMounted] = useState(false);
+
+  useEffect(() => {
+    setIsMounted(true);
+    return () => {
+      setIsMounted(false);
+      // Properly cleanup Swiper instance if it exists
+      if (swiperInstance) {
+        swiperInstance.destroy?.(true, true);
+      }
+    };
+  }, [swiperInstance]);
 
   useEffect(() => {
     const loadArticles = async () => {
       try {
-        const featuredArticles = await getRandomArticles();
+        setLoading(true);
+        const featuredArticles = await getRandomArticles(5);
         setArticles(featuredArticles || []);
       } catch (err) {
         console.error("Error loading featured articles:", err);
@@ -38,40 +52,40 @@ const ArticleCarousel = () => {
         duration: 1000,
         once: false,
         mirror: true,
+        disable: false, // Always enable on mobile
       });
     }
 
     const currentSection = sectionRef.current;
+    if (!currentSection) return;
 
     const observer = new IntersectionObserver(
       ([entry]) => {
-        // The isVisible state is no longer used in the component
+        if (entry.isIntersecting) {
+          // No need to manually initialize Swiper; it's handled automatically
+        }
       },
       {
         threshold: 0.2,
       }
     );
 
-    if (currentSection) {
-      observer.observe(currentSection);
-    }
+    observer.observe(currentSection);
 
     return () => {
-      if (currentSection) {
-        observer.unobserve(currentSection);
-      }
+      observer.disconnect();
     };
   }, []);
 
   const handleTouchStart = () => {
-    if (swiperRef.current?.autoplay) {
-      swiperRef.current.autoplay.stop();
+    if (swiperInstance?.autoplay) {
+      swiperInstance.autoplay.stop();
     }
   };
 
   const handleTouchEnd = () => {
-    if (swiperRef.current?.autoplay) {
-      swiperRef.current.autoplay.start();
+    if (swiperInstance?.autoplay) {
+      swiperInstance.autoplay.start();
     }
   };
 
@@ -94,7 +108,15 @@ const ArticleCarousel = () => {
   if (!articles || articles.length === 0) {
     return (
       <div className="min-h-[400px] flex items-center justify-center">
-        <p className="text-gray-400">No hay artículos destacados disponibles</p>
+        <p className="text-black">No hay artículos destacados disponibles</p>
+      </div>
+    );
+  }
+
+  if (swiperError) {
+    return (
+      <div className="min-h-[400px] flex items-center justify-center">
+        <p className="text-red-500">Error al cargar el carrusel</p>
       </div>
     );
   }
@@ -109,7 +131,7 @@ const ArticleCarousel = () => {
       data-aos="fade-in"
       data-aos-duration="1000"
     >
-      <style jsx="true">{`
+      <style global="true">{`
         .swiper-pagination-bullet {
           background: rgba(255, 255, 255, 0.5) !important;
           opacity: 1 !important;
@@ -131,6 +153,12 @@ const ArticleCarousel = () => {
           display: flex !important;
           align-items: center !important;
           justify-content: center !important;
+          padding: 0 16px !important;
+        }
+        @media (max-width: 640px) {
+          .swiper-slide {
+            padding: 0 8px !important;
+          }
         }
       `}</style>
       {/* Background Pattern */}
@@ -166,7 +194,7 @@ const ArticleCarousel = () => {
         {/* Desktop & Mobile Carousel */}
         <div className="w-full">
           <Swiper
-            ref={swiperRef}
+            onSwiper={setSwiperInstance}
             modules={[Pagination]}
             spaceBetween={32}
             slidesPerView={3.5}
@@ -183,6 +211,7 @@ const ArticleCarousel = () => {
             className="w-full pb-20"
             onTouchStart={handleTouchStart}
             onTouchEnd={handleTouchEnd}
+            onError={() => setSwiperError(true)}
             breakpoints={{
               320: {
                 slidesPerView: 1,

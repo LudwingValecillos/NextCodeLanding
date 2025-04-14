@@ -45,39 +45,57 @@ const testArticles = [
 
 // Cache for articles
 let cachedArticles = null;
+let lastFetchTime = 0;
+const CACHE_DURATION = 5 * 60 * 1000; // 5 minutes
 
 // Fetch all articles from JSONBin
 export const fetchArticles = async () => {
   try {
-    // Use cached articles if available
-    if (cachedArticles) {
+    // Use cached articles if available and not expired
+    const now = Date.now();
+    if (cachedArticles && now - lastFetchTime < CACHE_DURATION) {
       return cachedArticles;
+    }
+
+    // If we're getting rate limited, use cached data
+    if (lastFetchTime && now - lastFetchTime < 60000) {
+      // 1 minute cooldown
+      return cachedArticles || testArticles;
     }
 
     const response = await fetch(API_URL, {
       method: "GET",
-      headers: headers,
+      headers: {
+        ...headers,
+        "Content-Type": "application/json",
+      },
+      mode: "cors",
     });
 
     if (!response.ok) {
-      cachedArticles = testArticles;
-      return cachedArticles;
+      if (response.status === 429) {
+        console.warn("Rate limit exceeded, using cached data");
+        lastFetchTime = now;
+        return cachedArticles || testArticles;
+      }
+      console.warn("API request failed, using test data");
+      return testArticles;
     }
 
     const data = await response.json();
 
     // Check if the response has the expected structure
     if (!data.record || !data.record.securityArticles) {
-      cachedArticles = testArticles;
-      return cachedArticles;
+      console.warn("Invalid API response structure, using test data");
+      return testArticles;
     }
 
     cachedArticles = data.record.securityArticles;
+    lastFetchTime = now;
     return cachedArticles;
   } catch (error) {
-    console.error("Failed to fetch articles, using test data:", error);
-    cachedArticles = testArticles;
-    return cachedArticles;
+    console.warn("Failed to fetch articles, using test data:", error);
+    return cachedArticles || testArticles;
   }
 };
 

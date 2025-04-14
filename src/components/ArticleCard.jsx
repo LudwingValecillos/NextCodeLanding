@@ -55,7 +55,7 @@ const ArticleCard = ({ article }) => {
   }, []);
 
   return (
-    <article className="bg-gray-800/50 rounded-xl overflow-hidden border border-gray-700/50">
+    <article className="bg-gray-900 rounded-xl overflow-hidden border border-gray-700/50 shadow-lg hover:shadow-xl transition-shadow duration-300">
       <Link to={`/article/${article.id}`} className="block">
         <div className="relative h-48 overflow-hidden">
           <img
@@ -71,50 +71,57 @@ const ArticleCard = ({ article }) => {
               e.target.src = fallbackImage;
             }}
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-gray-900 via-transparent to-transparent opacity-60" />
+          <div className="absolute inset-0 bg-gradient-to-t from-gray-900 via-transparent to-transparent opacity-70" />
         </div>
 
-        <div className="p-6">
-          <div className="flex items-center justify-between mb-4">
-            <time dateTime={article.date} className="text-sm text-gray-400">
+        <div className="p-4 sm:p-6">
+          <div className="flex items-center justify-between mb-3 sm:mb-4">
+            <time
+              dateTime={article.date}
+              className="text-xs sm:text-sm text-gray-400"
+            >
               {formattedDate}
             </time>
-            <span className="px-3 py-1 text-xs bg-[#20A366]/20 text-[#20A366] rounded-full">
+            <span className="px-2 sm:px-3 py-1 text-xs bg-[#20A366]/20 text-[#20A366] rounded-full">
               {article.category}
             </span>
           </div>
 
-          <h3 className="text-xl font-semibold text-white mb-4 line-clamp-2">
+          <h3 className="text-lg sm:text-xl font-semibold text-white mb-3 sm:mb-4 line-clamp-2">
             {article.title}
           </h3>
 
-          <div className="max-w-4xl mx-auto mb-2 md:mb-4">
-            <div className="prose prose-invert max-w-none text-gray-300 text-base md:text-lg leading-relaxed line-clamp-3">
+          <div className="mb-3 sm:mb-4">
+            <div className="prose prose-invert max-w-none text-gray-300 text-sm sm:text-base leading-relaxed line-clamp-3">
               {plainText}
             </div>
           </div>
 
-          <div className="flex flex-wrap gap-2">
+          <div className="flex flex-wrap gap-1 sm:gap-2 mb-3 sm:mb-4">
             {article.tags.map((tag, index) => (
               <span
                 key={index}
-                className="px-2 py-1 bg-gray-700 text-gray-300 rounded-full text-xs"
+                className="px-2 py-1 bg-gray-800 text-gray-300 rounded-full text-xs"
               >
                 #{tag}
               </span>
             ))}
           </div>
 
-          <div className="flex items-center justify-between mt-2">
+          <div className="flex items-center justify-between">
             <div className="flex items-center space-x-2">
-              <div className="w-8 h-8 rounded-full bg-gray-700 flex items-center justify-center">
-                <span className="text-white text-sm font-medium">
+              <div className="w-6 h-6 sm:w-8 sm:h-8 rounded-full bg-gray-800 flex items-center justify-center">
+                <span className="text-white text-xs sm:text-sm font-medium">
                   {article.author.charAt(0)}
                 </span>
               </div>
-              <span className="text-sm text-gray-400">{article.author}</span>
+              <span className="text-xs sm:text-sm text-gray-400">
+                {article.author}
+              </span>
             </div>
-            <span className="text-[#20A366] text-sm">Leer más →</span>
+            <span className="text-[#20A366] text-xs sm:text-sm">
+              Leer más →
+            </span>
           </div>
         </div>
       </Link>
