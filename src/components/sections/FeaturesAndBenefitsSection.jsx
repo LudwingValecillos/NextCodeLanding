@@ -163,7 +163,7 @@ const FeaturesAndBenefitsSection = () => {
               <img
                 src={image}
                 alt="Web Development"
-                className="w-full h-full object-cover"
+                className="w-full h-full"
               />
             </div>
           </div>

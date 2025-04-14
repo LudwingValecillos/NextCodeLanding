@@ -5,8 +5,12 @@ import "aos/dist/aos.css";
 import heroImage from "../../assets/images/fondohero.avif";
 import image2 from "../../assets/images/2.webp";
 import logo from "../../assets/images/sinfondoaa.png";
+import { useLocation } from "react-router-dom";
 
 const HeroSection = () => {
+  const location = useLocation();
+  const isHomePage = location.pathname === "/";
+
   useEffect(() => {
     AOS.init({
       duration: 1000,
@@ -50,7 +54,25 @@ const HeroSection = () => {
           maxWidth: "100vw",
           overflow: "hidden",
         }}
-      />
+      >
+        <img
+          src={heroImage}
+          alt="Background"
+          className="hidden"
+          loading="eager"
+          fetchpriority="high"
+          width="1920"
+          height="1080"
+          decoding="async"
+          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 1920px"
+          srcSet={`
+            ${heroImage}?w=480&q=80 480w,
+            ${heroImage}?w=768&q=80 768w,
+            ${heroImage}?w=1024&q=80 1024w,
+            ${heroImage}?w=1920&q=80 1920w
+          `}
+        />
+      </motion.div>
 
       {/* Gradient Overlays */}
       <motion.div
@@ -88,10 +110,15 @@ const HeroSection = () => {
         <div className="flex justify-center items-center lg:justify-normal mt-0">
           <img
             src={logo}
-            alt=""
+            alt="Logo"
             data-aos="fade-up"
             className="w-64 sm:w-80 max-w-full h-auto"
             style={{ maxWidth: "100%" }}
+            loading="eager"
+            fetchpriority="high"
+            width="320"
+            height="320"
+            decoding="async"
           />
         </div>
 
@@ -129,8 +156,9 @@ const HeroSection = () => {
               variants={itemVariants}
               className="text-lg md:text-xl text-gray-200 mb-8 max-w-2xl mx-auto leading-relaxed"
               data-aos="fade-up"
-              data-aos-duration="800"
-              data-aos-delay="300"
+              data-aos-duration="400"
+              data-aos-delay="100"
+              style={{ willChange: "transform, opacity" }}
             >
               Creamos sitios web modernos y funcionales que impulsan tu negocio
               al siguiente nivel.
@@ -142,52 +170,60 @@ const HeroSection = () => {
               data-aos-duration="800"
               data-aos-delay="400"
             >
-              <motion.button
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className="px-8 py-4 bg-[#20A366] text-white rounded-lg text-lg font-semibold
-                transform transition-all duration-300 hover:shadow-lg hover:shadow-[#20A366]/30
-                flex items-center justify-center gap-2 group relative overflow-hidden"
-                onClick={() => {
-                  const contactoDiv = document.getElementById("contacto");
-                  contactoDiv.scrollIntoView({ behavior: "smooth" });
-                }}
-              >
-                <span className="relative z-10">Comenzar Proyecto</span>
-                <motion.div
-                  className="absolute inset-0 bg-white"
-                  initial={{ scale: 0, opacity: 0 }}
-                  whileHover={{ scale: 1, opacity: 0.1 }}
-                  transition={{ duration: 0.3 }}
-                />
-              </motion.button>
-              <motion.button
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className="px-8 py-4 bg-white/80 border-2 border-white text-black hover:text-white rounded-lg text-lg font-semibold
-                transform transition-all duration-300 hover:bg-white/10
-                flex items-center justify-center gap-2 group"
-                onClick={() => {
-                  const contactoDiv = document.getElementById("servicios");
-                  contactoDiv.scrollIntoView({ behavior: "smooth" });
-                }}
-              >
-                <span>Ver planes</span>
-                <motion.svg
-                  className="w-5 h-5"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                  whileHover={{ x: 5 }}
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M13 7l5 5m0 0l-5 5m5-5H6"
-                  />
-                </motion.svg>
-              </motion.button>
+              {isHomePage && (
+                <>
+                  <motion.button
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
+                    className="px-8 py-4 bg-[#20A366] text-white rounded-lg text-lg font-semibold
+                    transform transition-all duration-300 hover:shadow-lg hover:shadow-[#20A366]/30
+                    flex items-center justify-center gap-2 group relative overflow-hidden"
+                    onClick={() => {
+                      const contactoDiv = document.getElementById("contact");
+                      if (contactoDiv) {
+                        contactoDiv.scrollIntoView({ behavior: "smooth" });
+                      }
+                    }}
+                  >
+                    <span className="relative z-10">Comenzar Proyecto</span>
+                    <motion.div
+                      className="absolute inset-0 bg-white"
+                      initial={{ scale: 0, opacity: 0 }}
+                      whileHover={{ scale: 1, opacity: 0.1 }}
+                      transition={{ duration: 0.3 }}
+                    />
+                  </motion.button>
+                  <motion.button
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
+                    className="px-8 py-4 bg-white/80 border-2 border-white text-black hover:text-white rounded-lg text-lg font-semibold
+                    transform transition-all duration-300 hover:bg-white/10
+                    flex items-center justify-center gap-2 group"
+                    onClick={() => {
+                      const serviciosDiv = document.getElementById("servicios");
+                      if (serviciosDiv) {
+                        serviciosDiv.scrollIntoView({ behavior: "smooth" });
+                      }
+                    }}
+                  >
+                    <span>Ver planes</span>
+                    <motion.svg
+                      className="w-5 h-5"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                      whileHover={{ x: 5 }}
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M13 7l5 5m0 0l-5 5m5-5H6"
+                      />
+                    </motion.svg>
+                  </motion.button>
+                </>
+              )}
             </motion.div>
 
             {/* Features Grid */}
@@ -228,19 +264,37 @@ const HeroSection = () => {
             variants={itemVariants}
             className="relative order-1 lg:order-2 mb-8 lg:mb-0 hidden lg:block"
             data-aos="fade-left"
-            data-aos-delay="200"
+            data-aos-delay="100"
           >
             <motion.div
               whileHover={{ scale: 1.05 }}
-              transition={{ duration: 0.5 }}
+              transition={{ duration: 0.3 }}
               className="relative rounded-2xl overflow-hidden shadow-2xl"
             >
               <img
                 src={image2}
                 alt="Seguridad Inteligente"
                 className="w-full h-[600px] object-cover"
+                loading="eager"
+                width={800}
+                height={600}
+                fetchpriority="high"
+                decoding="async"
+                style={{
+                  contentVisibility: "auto",
+                  backgroundColor: "#1a1a1a",
+                  objectFit: "cover",
+                  objectPosition: "center",
+                  willChange: "transform",
+                }}
+                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 800px"
+                srcSet={`
+                  ${image2}?w=400&q=80 400w,
+                  ${image2}?w=800&q=80 800w,
+                  ${image2}?w=1200&q=80 1200w
+                `}
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent " />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" />
             </motion.div>
           </motion.div>
         </div>

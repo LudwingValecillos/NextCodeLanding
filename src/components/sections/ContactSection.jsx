@@ -80,7 +80,7 @@ const ContactSection = () => {
   return (
     <section
       className="py-20 relative overflow-hidden min-h-screen flex items-center"
-      id="contacto"
+      id="contact"
     >
       {/* Background with animated gradient */}
       <div className="absolute inset-0 bg-gradient-to-br from-black via-gray-900 to-black">

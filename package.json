@@ -1,5 +1,5 @@
 {
-  "name": "my-dental-landing",
+  "name": "landing-security",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -9,15 +9,22 @@
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
     "aos": "^2.3.4",
+    "date-fns": "^2.30.0",
     "framer-motion": "^10.16.4",
+    "marked": "^15.0.8",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-helmet-async": "^2.0.5",
+    "react-hot-toast": "^2.5.2",
+    "react-quill": "^2.0.0",
+    "react-router-dom": "^6.22.1",
     "react-scripts": "5.0.1",
+    "react-toastify": "^11.0.5",
     "swiper": "^11.2.6",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "start": "set PORT=3000 && react-scripts start",
     "build": "set CI=false && react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
@@ -47,6 +54,7 @@
     }
   },
   "devDependencies": {
+    "@tailwindcss/typography": "^0.5.16",
     "tailwindcss": "^3.4.1"
   }
 }
