@@ -149,7 +149,7 @@ const ArticleCarousel = () => {
         >
           Descubre nuestros artículos más recientes
         </p>
-        <a href="/articles" className="text-white text-end block mb-4">
+        <a href="/articles" className="text-white text-end block my-4 lg:mb-4">
           <span className="text-white mb-2 font-bold text-end bg-[#20A366] rounded-xl px-4 py-2 hover:bg-[#20A366] transition-all duration-300 cursor-pointer hover:scale-105">
             Ver todos los artículos
           </span>
@@ -176,27 +176,32 @@ const ArticleCarousel = () => {
             onTouchEnd={handleTouchEnd}
             breakpoints={{
               320: {
-                slidesPerView: 1.15,
-                spaceBetween: 12,
+                slidesPerView: 1,
+                spaceBetween: 16,
                 centeredSlides: true,
               },
               375: {
-                slidesPerView: 1.2,
+                slidesPerView: 1,
                 spaceBetween: 16,
                 centeredSlides: true,
               },
               425: {
-                slidesPerView: 1.3,
+                slidesPerView: 1,
+                spaceBetween: 16,
+                centeredSlides: true,
+              },
+              640: {
+                slidesPerView: 1.5,
                 spaceBetween: 20,
                 centeredSlides: true,
               },
               768: {
-                slidesPerView: 2.5,
+                slidesPerView: 2,
                 spaceBetween: 24,
                 centeredSlides: false,
               },
               1024: {
-                slidesPerView: 3.5,
+                slidesPerView: 3,
                 spaceBetween: 32,
                 centeredSlides: false,
               },
