@@ -12,6 +12,7 @@ import ArticleAds from "../components/ArticleAds";
 import { optimizeImage } from "../utils/imageOptimizer";
 
 const ArticleDetailPage = () => {
+  window.scrollTo(0, 0);
   const { id } = useParams();
   const navigate = useNavigate();
 
