@@ -16,13 +16,10 @@ const ArticleCarousel = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [swiperError, setSwiperError] = useState(false);
-  const [isMounted, setIsMounted] = useState(false);
 
   useEffect(() => {
-    setIsMounted(true);
+    // Properly cleanup Swiper instance if it exists
     return () => {
-      setIsMounted(false);
-      // Properly cleanup Swiper instance if it exists
       if (swiperInstance) {
         swiperInstance.destroy?.(true, true);
       }
