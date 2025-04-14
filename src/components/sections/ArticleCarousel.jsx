@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Pagination, Autoplay } from "swiper/modules";
+import { Pagination } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
@@ -170,12 +170,6 @@ const ArticleCarousel = () => {
                 "swiper-pagination-bullet-active !bg-[#20A366]",
               bulletClass:
                 "swiper-pagination-bullet !bg-white/50 !w-3 !h-3 !opacity-100",
-            }}
-            autoplay={{
-              delay: 8000,
-              disableOnInteraction: false,
-              pauseOnMouseEnter: true,
-              waitForTransition: true,
             }}
             className="w-full pb-20 px-4"
             onTouchStart={handleTouchStart}

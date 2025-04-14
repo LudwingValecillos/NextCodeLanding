@@ -100,12 +100,6 @@ const ArticlesPage = () => {
     setCurrentPage(1);
   }, [searchTerm, selectedCategory, selectedTags, dateFilter, articles]);
 
-  const handleTagClick = (tag) => {
-    setSelectedTags((prev) =>
-      prev.includes(tag) ? prev.filter((t) => t !== tag) : [...prev, tag]
-    );
-  };
-
   // Pagination logic
   const indexOfLastArticle = currentPage * articlesPerPage;
   const indexOfFirstArticle = indexOfLastArticle - articlesPerPage;
@@ -115,7 +109,6 @@ const ArticlesPage = () => {
   );
   const totalPages = Math.ceil(filteredArticles.length / articlesPerPage);
 
-
   if (loading) {
     return (
       <div className="min-h-screen bg-gray-900 flex items-center justify-center">
@@ -123,7 +116,6 @@ const ArticlesPage = () => {
       </div>
     );
   }
-
 
   return (
     <div className="min-h-screen bg-gray-900 py-12 px-4 sm:px-6 lg:px-8">

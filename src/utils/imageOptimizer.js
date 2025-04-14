@@ -37,7 +37,6 @@ export const generateProgressiveImageVersions = (url) => {
   if (!url) return null;
 
   const baseUrl = new URL(url);
-  const params = new URLSearchParams(baseUrl.search);
 
   // Versión tiny (muy pequeña para placeholder)
   const tinyUrl = new URL(url);
