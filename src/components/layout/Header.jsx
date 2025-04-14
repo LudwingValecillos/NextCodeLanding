@@ -30,22 +30,27 @@ const Header = () => {
             >
               Contacto
             </Link>
-            {localStorage.getItem("isAuthenticated") == "true" ? 
-            <>
-              <Link
-                to="/create-article"
-                className="hover:text-[#20A366] transition-colors"
-              >
-                Crear Artículo
-              </Link>
-              <button onClick={() => {
-                localStorage.removeItem("isAuthenticated");
-                window.location.href = "/articles";
-              }} className="bg-[#20A366] p-1 rounded-md hover:text-black transition-colors">
-                Cerrar Sesión
-              </button>
+            {localStorage.getItem("isAuthenticated") === "true" ? (
+              <>
+                <Link
+                  to="/create-article"
+                  className="hover:text-[#20A366] transition-colors"
+                >
+                  Crear Artículo
+                </Link>
+                <button
+                  onClick={() => {
+                    localStorage.removeItem("isAuthenticated");
+                    window.location.href = "/articles";
+                  }}
+                  className="bg-[#20A366] p-1 rounded-md hover:text-black transition-colors"
+                >
+                  Cerrar Sesión
+                </button>
               </>
-            : "" }
+            ) : (
+              ""
+            )}
           </div>
 
           {/* Mobile menu button */}

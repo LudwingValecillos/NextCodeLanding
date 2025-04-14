@@ -219,7 +219,7 @@ export const deleteArticle = async (id) => {
 };
 
 // Export all functions
-export default {
+const articlesAPI = {
   fetchArticles,
   getArticleById,
   getLatestArticles,
@@ -230,3 +230,5 @@ export default {
   updateArticle,
   deleteArticle,
 };
+
+export default articlesAPI;

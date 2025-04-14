@@ -1,5 +1,4 @@
 import React from "react";
-import { FaArrowLeft } from "react-icons/fa";
 
 const ArticleHeader = ({ article, onBack }) => {
   return (
