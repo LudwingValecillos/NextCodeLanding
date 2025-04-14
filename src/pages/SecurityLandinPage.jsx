@@ -1,4 +1,4 @@
-import React, { useEffect, lazy, Suspense } from "react";
+import React, { useEffect, lazy, Suspense, useState } from "react";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import { AnimatePresence } from "framer-motion";
@@ -35,6 +35,41 @@ const DesignProposalSection = lazy(() =>
   import("../components/sections/DesignProposalSection")
 );
 
+// Component for loading state
+const LoadingSpinner = () => (
+  <div className="min-h-screen bg-gradient-to-b from-gray-900 to-black flex items-center justify-center">
+    <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-[#20A366]"></div>
+  </div>
+);
+
+const ArticleCarouselWithFallback = () => {
+  const [articles, setArticles] = useState([]);
+  
+  useEffect(() => {
+    // Pre-fetch articles to avoid loading state when ArticleCarousel loads
+    const preloadArticles = async () => {
+      try {
+        const latestArticles = await getLatestArticles();
+        setArticles(latestArticles || []);
+      } catch (error) {
+        console.error("Failed to preload articles:", error);
+      }
+    };
+    
+    preloadArticles();
+  }, []);
+  
+  return (
+    <Suspense fallback={
+      <div className="min-h-[400px] bg-gradient-to-b from-gray-900 to-black flex items-center justify-center">
+        <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-[#20A366]"></div>
+      </div>
+    }>
+      <ArticleCarousel articles={articles} />
+    </Suspense>
+  );
+};
+
 const SecurityLandingPage = () => {
   useEffect(() => {
     // Initialize AOS with optimized settings
@@ -43,7 +78,7 @@ const SecurityLandingPage = () => {
       once: true,
       offset: 100,
       delay: 100,
-      disable: window.innerWidth < 768, // Disable on mobile
+      disable: window.innerWidth < 768, // Disable on mobile for better performance
     });
 
     return () => {
@@ -53,7 +88,7 @@ const SecurityLandingPage = () => {
 
   return (
     <AnimatePresence mode="wait">
-      <div className="font-sans">
+      <div className="font-sans overflow-x-hidden">
         {/* Add preload links */}
         {preloadLinks.map((link, index) => (
           <link
@@ -64,13 +99,8 @@ const SecurityLandingPage = () => {
             type={link.type}
           />
         ))}
-        <Suspense
-          fallback={
-            <div className="min-h-screen bg-gradient-to-b from-gray-900 to-black flex items-center justify-center">
-              <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-[#20A366]"></div>
-            </div>
-          }
-        >
+        
+        <Suspense fallback={<LoadingSpinner />}>
           <HeroSection />
           <AboutSection />
           <ServicesSection />
@@ -78,7 +108,7 @@ const SecurityLandingPage = () => {
           <FeaturesAndBenefitsSection />
           <ProjectsSection />
           <FAQSection />
-          <ArticleCarousel articles={getLatestArticles()} />
+          <ArticleCarouselWithFallback />
           <ContactSection />
           <WhatsAppButton />
         </Suspense>
