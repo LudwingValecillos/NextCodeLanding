@@ -44,6 +44,15 @@ const ProjectsSection = () => {
 
   const projects = [
     {
+      title: "M-Store | Tienda De Iphones",
+      description:
+        "Landing page para una empresa especializada en venta de Iphones y accesorios.",
+      image: "https://i.imgur.com/fhXzaTC.png",
+      link: "https://tiendamstore.com.ar",
+      github: null,
+      color: "#57B4BA",
+    },
+    {
       title: "Soporte Magnético 360° BONERUY X68",
       description:
         "Landing page para una empresa especializada en venta de soportes magnéticos.",
@@ -53,11 +62,11 @@ const ProjectsSection = () => {
       color: "#7B68F1",
     },
     {
-      title: "M-Store",
+      title: "M-Store | Security",
       description:
         "Landing page para una empresa especializada en la instalación de cámaras de seguridad.",
-      image: "https://i.imgur.com/oeqnQZp.png",
-      link: "https://m-security1.netlify.app/",
+      image: "https://i.imgur.com/MYk3Rx8.png",
+      link: "https://tiendamstore.com.ar/security",
       github: null,
       color: "#20A366",
     },

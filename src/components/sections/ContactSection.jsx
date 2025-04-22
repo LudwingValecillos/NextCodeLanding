@@ -118,7 +118,7 @@ const ContactSection = () => {
 
             {/* Form Section */}
             <motion.div
-              className="bg-white/5 backdrop-blur-xl rounded-2xl p-8 md:p-12 shadow-2xl border border-white/10"
+              className="bg-white/5 backdrop-blur-xl rounded-2xl p-8 md:p-12 shadow-2xl border border-white"
               data-aos="fade-up"
               data-aos-delay="200"
               whileHover={{ scale: 1.01 }}
@@ -140,7 +140,7 @@ const ContactSection = () => {
                       name="name"
                       value={formData.name}
                       onChange={handleChange}
-                      className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-lg 
+                      className="w-full px-4 py-3 bg-white/5 border border-white rounded-lg 
                       focus:ring-2 focus:ring-[#20A366] focus:border-transparent text-white
                       transition-all duration-300 hover:border-white/30"
                       required
@@ -160,7 +160,7 @@ const ContactSection = () => {
                       name="email"
                       value={formData.email}
                       onChange={handleChange}
-                      className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-lg 
+                      className="w-full px-4 py-3 bg-white/5 border border-white rounded-lg 
                       focus:ring-2 focus:ring-[#20A366] focus:border-transparent text-white
                       transition-all duration-300 hover:border-white/30"
                       required
@@ -181,7 +181,7 @@ const ContactSection = () => {
                     name="phone"
                     value={formData.phone}
                     onChange={handleChange}
-                    className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-lg 
+                    className="w-full px-4 py-3 bg-white/5 border border-white rounded-lg 
                     focus:ring-2 focus:ring-[#20A366] focus:border-transparent text-white
                     transition-all duration-300 hover:border-white/30"
                   />
@@ -200,7 +200,7 @@ const ContactSection = () => {
                     value={formData.message}
                     onChange={handleChange}
                     rows="4"
-                    className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-lg 
+                    className="w-full px-4 py-3 bg-white/5 border border-white rounded-lg 
                     focus:ring-2 focus:ring-[#20A366] focus:border-transparent text-white
                     transition-all duration-300 hover:border-white/30 resize-none"
                     required
@@ -239,7 +239,7 @@ const ContactSection = () => {
                 data-aos-delay="300"
               >
                 <a
-                  href="https://www.instagram.com/nextcode01/"
+                  href="https://www.instagram.com/nextcode.com.ar/"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex items-center text-white hover:text-[#20A366] transition-all duration-300 group"
@@ -264,7 +264,7 @@ const ContactSection = () => {
             </motion.div>
             {/* Profile Section */}
             <motion.div
-              className="bg-white/5 backdrop-blur-xl rounded-2xl p-8 shadow-2xl border border-white/10"
+              className="bg-white/5 backdrop-blur-xl rounded-2xl p-8 shadow-2xl border border-white"
               data-aos="fade-right"
               data-aos-delay="200"
               whileHover={{ scale: 1.01 }}

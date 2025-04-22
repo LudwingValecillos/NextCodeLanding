@@ -250,7 +250,7 @@ const AboutSection = () => {
           {[
             {
               icon: <UserGroupIcon className="w-6 h-6 text-[#20A366]" />,
-              value: "+50",
+              value: "+20",
               label: "Clientes",
               delay: 100,
             },

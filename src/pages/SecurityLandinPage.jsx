@@ -1,8 +1,8 @@
-import React, { useEffect, lazy, Suspense, useState } from "react";
+import React, { useEffect, lazy } from "react";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import { AnimatePresence } from "framer-motion";
-import { getLatestArticles } from "../articles/articles";
+// import { getLatestArticles } from "../articles/articles";
 
 // Add preload links for critical resources
 const preloadLinks = [
@@ -25,9 +25,9 @@ const ContactSection = lazy(() =>
   import("../components/sections/ContactSection")
 );
 const WhatsAppButton = lazy(() => import("../components/WhatsAppButton"));
-const ArticleCarousel = lazy(() =>
-  import("../components/sections/ArticleCarousel")
-);
+// const ArticleCarousel = lazy(() =>
+//   import("../components/sections/ArticleCarousel")
+// );
 const FeaturesAndBenefitsSection = lazy(() =>
   import("../components/sections/FeaturesAndBenefitsSection")
 );
@@ -35,40 +35,40 @@ const DesignProposalSection = lazy(() =>
   import("../components/sections/DesignProposalSection")
 );
 
-// Component for loading state
-const LoadingSpinner = () => (
-  <div className="min-h-screen bg-gradient-to-b from-gray-900 to-black flex items-center justify-center">
-    <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-[#20A366]"></div>
-  </div>
-);
+// // Component for loading state
+// const LoadingSpinner = () => (
+//   <div className="min-h-screen bg-gradient-to-b from-gray-900 to-black flex items-center justify-center">
+//     <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-[#20A366]"></div>
+//   </div>
+// );
 
-const ArticleCarouselWithFallback = () => {
-  const [articles, setArticles] = useState([]);
-  
-  useEffect(() => {
-    // Pre-fetch articles to avoid loading state when ArticleCarousel loads
-    const preloadArticles = async () => {
-      try {
-        const latestArticles = await getLatestArticles();
-        setArticles(latestArticles || []);
-      } catch (error) {
-        console.error("Failed to preload articles:", error);
-      }
-    };
-    
-    preloadArticles();
-  }, []);
-  
-  return (
-    <Suspense fallback={
-      <div className="min-h-[400px] bg-gradient-to-b from-gray-900 to-black flex items-center justify-center">
-        <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-[#20A366]"></div>
-      </div>
-    }>
-      <ArticleCarousel articles={articles} />
-    </Suspense>
-  );
-};
+// const ArticleCarouselWithFallback = () => {
+//   const [articles, setArticles] = useState([]);
+
+//   useEffect(() => {
+//     // Pre-fetch articles to avoid loading state when ArticleCarousel loads
+//     const preloadArticles = async () => {
+//       try {
+//         const latestArticles = await getLatestArticles();
+//         setArticles(latestArticles || []);
+//       } catch (error) {
+//         console.error("Failed to preload articles:", error);
+//       }
+//     };
+
+//     preloadArticles();
+//   }, []);
+
+//   return (
+//     <Suspense fallback={
+//       <div className="min-h-[400px] bg-gradient-to-b from-gray-900 to-black flex items-center justify-center">
+//         <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-[#20A366]"></div>
+//       </div>
+//     }>
+//       <ArticleCarousel articles={articles} />
+//     </Suspense>
+//   );
+// };
 
 const SecurityLandingPage = () => {
   useEffect(() => {
@@ -99,19 +99,19 @@ const SecurityLandingPage = () => {
             type={link.type}
           />
         ))}
-        
-        <Suspense fallback={<LoadingSpinner />}>
-          <HeroSection />
-          <AboutSection />
-          <ServicesSection />
-          <DesignProposalSection />
-          <FeaturesAndBenefitsSection />
-          <ProjectsSection />
-          <FAQSection />
-          <ArticleCarouselWithFallback />
-          <ContactSection />
-          <WhatsAppButton />
-        </Suspense>
+
+        {/* <Suspense fallback={<LoadingSpinner />}> */}
+        <HeroSection />
+        <AboutSection />
+        <ServicesSection />
+        <DesignProposalSection />
+        <FeaturesAndBenefitsSection />
+        <ProjectsSection />
+        <FAQSection />
+        {/* <ArticleCarouselWithFallback /> */}
+        <ContactSection />
+        <WhatsAppButton />
+        {/* </Suspense> */}
       </div>
     </AnimatePresence>
   );
