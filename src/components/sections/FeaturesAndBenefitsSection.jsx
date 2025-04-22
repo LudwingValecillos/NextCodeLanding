@@ -1,8 +1,6 @@
 import React, { useEffect, useRef } from "react";
 import AOS from "aos";
 import "aos/dist/aos.css";
-// import image from "../../assets/images/presenciadigital.png";
-import image from "../../assets/images/projectsection.jpg";
 
 
 const FeaturesAndBenefitsSection = () => {
