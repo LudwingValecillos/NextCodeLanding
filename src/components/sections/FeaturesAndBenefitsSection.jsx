@@ -1,7 +1,9 @@
 import React, { useEffect, useRef } from "react";
 import AOS from "aos";
 import "aos/dist/aos.css";
-import image from "../../assets/images/presenciadigital.png";
+// import image from "../../assets/images/presenciadigital.png";
+import image from "../../assets/images/projectsection.jpg";
+
 
 const FeaturesAndBenefitsSection = () => {
   const sectionRef = useRef(null);
@@ -161,7 +163,7 @@ const FeaturesAndBenefitsSection = () => {
           <div className="relative mt-8 md:mt-0" data-aos="fade-left">
             <div className="aspect-video bg-gradient-to-br from-[#20A366]/20 to-blue-500/20 rounded-xl overflow-hidden">
               <img
-                src={image}
+                src="https://img.freepik.com/fotos-premium/concepto-marketing-crecimiento-digital-seo-o-optimizacion-motores-busqueda-grafico-grafico-analisis-web-crecimiento-negocios-finanzas-linea-ilustracion-renderizado-3d-movil_598821-660.jpg"
                 alt="Web Development"
                 className="w-full h-full"
               />

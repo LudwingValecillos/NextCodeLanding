@@ -113,7 +113,7 @@ const ServicesSection = () => {
   ];
 
   const handleMasInformacion = (plan) => {
-    const numeroTelefono = "+5491173680952";
+    const numeroTelefono = "+5491127281099";
     const mensaje = `Hola, estoy interesado en el ${plan}, me darias mas informacion?`;
 
     // Utiliza la API de WhatsApp para enviar el mensaje
