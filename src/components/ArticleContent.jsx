@@ -5,6 +5,7 @@ import {
   createBlurPlaceholder,
 } from "../utils/imageOptimizer";
 
+
 const ArticleContent = ({ article, htmlContent }) => {
   const [imageLoaded, setImageLoaded] = useState(false);
   const [showHighQuality, setShowHighQuality] = useState(false);

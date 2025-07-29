@@ -1,15 +1,20 @@
 {
-  "short_name": "M-Store Security",
-  "name": "M-Store Security - Sistemas de Seguridad Profesional",
-  "description": "Soluciones de seguridad avanzada para hogares y empresas. Cámaras de seguridad, NVR, sistemas de vigilancia y monitoreo 24/7.",
+  "short_name": "NextCode",
+  "name": "NextCode - Desarrollo Web Profesional",
+  "description": "Creamos sitios web modernos, responsivos y optimizados para SEO. Desarrollo web profesional con las últimas tecnologías.",
   "icons": [
     {
-      "src": "favicon.ico",
+      "src": "logonextcode.png",
       "sizes": "64x64 32x32 24x24 16x16",
-      "type": "image/x-icon"
+      "type": "image/png"
     },
     {
-      "src": "logo.png",
+      "src": "logonextcode.png",
+      "type": "image/png",
+      "sizes": "192x192"
+    },
+    {
+      "src": "logonextcode.png",
       "type": "image/png",
       "sizes": "512x512",
       "purpose": "any maskable"
@@ -17,8 +22,8 @@
   ],
   "start_url": ".",
   "display": "standalone",
-  "theme_color": "#2980B9",
+  "theme_color": "#20A366",
   "background_color": "#ffffff",
-  "categories": ["security", "business", "technology"],
-  "lang": "es-AR"
+  "categories": ["business", "technology", "web-development"],
+  "lang": "es"
 }

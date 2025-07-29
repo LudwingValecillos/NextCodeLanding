@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { marked } from "marked";
 import { optimizeImage } from "../utils/imageOptimizer";
 
+
 const ArticleCard = ({ article }) => {
   // Memoizar el texto plano del contenido
   const plainText = useMemo(() => {
