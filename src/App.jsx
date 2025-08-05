@@ -32,6 +32,29 @@ const LoadingFallback = () => (
   </div>
 );
 
+// Componente para redireccionar a la demo
+const DemoRedirect = () => {
+  React.useEffect(() => {
+    window.location.replace('https://voluble-squirrel-a30bd3.netlify.app');
+  }, []);
+
+  return (
+    <div style={{
+      display: 'flex',
+      flexDirection: 'column',
+      justifyContent: 'center',
+      alignItems: 'center',
+      height: '100vh',
+      backgroundColor: '#1a202c', 
+      color: 'white',
+      fontSize: '1.5rem'
+    }}>
+      <img src="/logonextcode.png" alt="logo" />
+      <p style={{ fontSize: '1.5rem', color: 'white' }}>Redirigiendo a la demo...</p>
+    </div>
+  );
+};
+
 function App() {
   return (
     <>
@@ -39,6 +62,7 @@ function App() {
       <Suspense fallback={<LoadingFallback />}>
         <Routes>
           <Route path="/" element={<SecurityLandingPage />} />
+          <Route path="/demo" element={<DemoRedirect />} />
           <Route path="/login" element={<LoginPage />} />
 
           <Route element={<Layout />}>
