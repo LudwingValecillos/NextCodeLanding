@@ -27,8 +27,7 @@ const LoadingFallback = () => (
     color: 'white',
     fontSize: '1.5rem'
   }}>
-    <img src="/logonextcode.png" alt="logo" />
-    <p style={{ fontSize: '1.5rem', color: 'white' }}>Cargando...</p>
+    <img src="/logonextcode.png" alt="logo" className="animate-spin" />
   </div>
 );
 
